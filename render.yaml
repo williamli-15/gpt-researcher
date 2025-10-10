@@ -11,7 +11,7 @@ services:
     region: ohio
     env: docker # Specifies that we're deploying a Docker container
     # IMPORTANT: Replace YOUR_GITHUB_USERNAME with your actual GitHub username!
-    repo: https://github.com/YOUR_GITHUB_USERNAME/gpt-researcher.git
+    repo: https://github.com/williamli-15/gpt-researcher.git
     dockerfilePath: ./Dockerfile # Path to the backend's Dockerfile in the repo
     healthCheckPath: / # OnRender will check this path to see if the service is live
     envVars:
@@ -42,7 +42,7 @@ services:
     name: dmresearcher
     env: docker
     # IMPORTANT: Replace YOUR_GITHUB_USERNAME with your actual GitHub username!
-    repo: https://github.com/YOUR_GITHUB_USERNAME/gpt-researcher.git
+    repo: https://github.com/williamli-15/gpt-researcher.git
     dockerfilePath: ./frontend/nextjs/Dockerfile # Path to the frontend's Dockerfile
     envVars:
       - key: PORT
@@ -52,4 +52,4 @@ services:
         fromService:
           type: web
           name: gpt-researcher-backend # Must match the 'name' of the backend service above
-          property: url # Injects the public URL of the backend service
+          property: hostport # Injects the public URL of the backend service
