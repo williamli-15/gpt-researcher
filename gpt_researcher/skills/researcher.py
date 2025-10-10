@@ -177,7 +177,7 @@ class ResearchConductor:
             await stream_output(
                 "logs",
                 "research_step_finalized",
-                f"Finalized research step.\n💸 Total Research Costs: ${self.researcher.get_costs()}",
+                f"Finalized research step.",
                 self.researcher.websocket,
             )
             if self.json_handler:

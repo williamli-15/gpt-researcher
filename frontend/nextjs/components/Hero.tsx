@@ -143,7 +143,7 @@ const Hero: FC<THeroProps> = ({
             className="mt-6 text-center px-4"
           >
             <p className="text-gray-400 text-sm font-light">
-              GPT Researcher may make mistakes. Verify important information and check sources.
+              AI may make mistakes. Verify important information and check sources.
             </p>
           </motion.div>
         </motion.div>
@@ -264,21 +264,21 @@ type suggestionType = {
 };
 
 const suggestions: suggestionType[] = [
-  {
-    id: 1,
-    name: "Stock analysis on ",
-    icon: "/img/stock2.svg",
-  },
-  {
-    id: 2,
-    name: "Help me plan an adventure to ",
-    icon: "/img/hiker.svg",
-  },
-  {
-    id: 3,
-    name: "What are the latest news on ",
-    icon: "/img/news.svg",
-  },
+  // {
+  //   id: 1,
+  //   name: "Stock analysis on ",
+  //   icon: "/img/stock2.svg",
+  // },
+  // {
+  //   id: 2,
+  //   name: "Help me plan an adventure to ",
+  //   icon: "/img/hiker.svg",
+  // },
+  // {
+  //   id: 3,
+  //   name: "What are the latest news on ",
+  //   icon: "/img/news.svg",
+  // },
 ];
 
 export default Hero;

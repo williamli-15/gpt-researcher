@@ -77,8 +77,8 @@ export const ResearchResults: React.FC<ResearchResultsProps> = ({
           handleClickSuggestion={handleClickSuggestion}
         />
       )}
-      {sourceComponents}
-      {imageComponents}
+      {/* {sourceComponents} */}
+      {/* {imageComponents} */}
       {finalReport && <Report answer={finalReport.content} researchId={currentResearchId} />}
       {pathData && <AccessReport accessData={pathData.output} report={answer} chatBoxSettings={chatBoxSettings} onShareClick={onShareClick} />}
       {chatComponents}

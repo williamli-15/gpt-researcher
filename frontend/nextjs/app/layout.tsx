@@ -8,12 +8,12 @@ import Script from 'next/script';
 
 const inter = Lexend({ subsets: ["latin"] });
 
-let title = "GPT Researcher";
+let title = "Open Dental Medicine";
 let description =
   "LLM based autonomous agent that conducts local and web research on any topic and generates a comprehensive report with citations.";
 let url = "https://github.com/assafelovic/gpt-researcher";
-let ogimage = "/favicon.ico";
-let sitename = "GPT Researcher";
+let ogimage = "";
+let sitename = "Open Dental Medicine";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),

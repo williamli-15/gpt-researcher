@@ -20,7 +20,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch, isCopil
       <div className="container relative h-[60px] px-4 lg:h-[80px] lg:px-0 pt-4 pb-4">
         <div className="flex flex-col items-center">
           {/* Logo/Home link */}
-          <a href="/">
+          {/* <a href="/">
             <img
               src="/img/gptr-logo.png"
               alt="logo"
@@ -28,7 +28,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch, isCopil
               height={60}
               className="lg:h-16 lg:w-16"
             />
-          </a>
+          </a> */}
           
           {/* Action buttons container */}
           <div className="flex gap-2 mt-2 transition-all duration-300 ease-in-out">

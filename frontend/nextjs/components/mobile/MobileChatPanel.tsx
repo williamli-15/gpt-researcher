@@ -80,9 +80,9 @@ const ChatMessage = memo(({
     return (
       <div className="flex flex-col space-y-2 py-1 max-w-full animate-fade-in">
         <div className="flex items-start space-x-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
+          {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
             <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
-          </div>
+          </div> */}
           <div className="flex-1 ai-message-bubble rounded-2xl px-4 py-3 text-sm text-white mr-4 shadow-lg">
             <div className="markdown-content prose prose-sm prose-invert max-w-none">
               <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -403,9 +403,9 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
         {/* Welcome/Intro message when no content */}
         {showIntroMessage && !loading && (
           <div className="flex items-start space-x-2 py-2 animate-fade-in">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
+            {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
               <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
-            </div>
+            </div> */}
             <div className="flex-1 ai-message-bubble rounded-2xl p-4 text-sm text-white shadow-lg">
               <p>Hi there! I&apos;m your research assistant. Type your question and I&apos;ll help you find information and insights.</p>
             </div>
@@ -415,9 +415,9 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
         {/* Research in progress message */}
         {loading && renderedMessages.length === 0 && (
           <div className="flex items-start space-x-2 py-2 animate-fade-in">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
+            {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
               <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
-            </div>
+            </div> */}
             <div className="flex-1 ai-message-bubble rounded-2xl p-4 text-sm text-white shadow-lg">
               <p>I&apos;m researching your question. This may take a moment...</p>
               <div className="mt-2 flex justify-center">
@@ -441,9 +441,9 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
         {/* Show typing indicator when processing */}
         {isProcessingChat && (
           <div className="flex items-start space-x-2 py-1 animate-fade-in">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
+            {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
               <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
-            </div>
+            </div> */}
             <div className="flex-1 ai-message-bubble rounded-2xl px-4 py-3 text-white">
               <div className="flex space-x-2">
                 <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse-slow"></div>

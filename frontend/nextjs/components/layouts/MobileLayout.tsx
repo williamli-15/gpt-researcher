@@ -70,7 +70,7 @@ export default function MobileLayout({
       <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800/50 shadow-md">
         <div className="flex items-center justify-between px-4 h-14">
           {/* Logo */}
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <a href="/" className="flex items-center">
               <img
                 src="/img/gptr-logo.png"
@@ -81,7 +81,7 @@ export default function MobileLayout({
               />
               <span className="font-medium text-gray-200 text-sm">GPT Researcher</span>
             </a>
-          </div>
+          </div> */}
           
           {/* Actions */}
           <div className="flex items-center space-x-2">
@@ -294,7 +294,7 @@ export default function MobileLayout({
       </div>
       
       {/* Footer */}
-      <footer className="mt-auto py-3 px-4 text-center border-t border-gray-800/40 bg-gray-900/80 backdrop-blur-sm">
+      {/* <footer className="mt-auto py-3 px-4 text-center border-t border-gray-800/40 bg-gray-900/80 backdrop-blur-sm">
         <div className="flex items-center justify-center gap-5 mb-3">
           <a href="https://gptr.dev" target="_blank" className="text-gray-400 hover:text-teal-400 transition-colors">
             <svg 
@@ -342,7 +342,7 @@ export default function MobileLayout({
         <div className="text-xs text-gray-400">
           © {new Date().getFullYear()} GPT Researcher. All rights reserved.
         </div>
-      </footer>
+      </footer> */}
       
       {/* Custom animations */}
       <style jsx global>{`

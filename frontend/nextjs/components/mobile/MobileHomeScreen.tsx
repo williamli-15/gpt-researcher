@@ -133,7 +133,7 @@ export default function MobileHomeScreen({
   return (
     <div className="flex flex-col h-full w-full bg-gradient-to-b from-gray-900 to-gray-950 pb-16">
       {/* Header with logo and title */}
-      <div className="pt-10 px-6 text-center mb-8">
+      {/* <div className="pt-10 px-6 text-center mb-8">
         <div className="flex justify-center mb-3">
           <img
             src="/img/gptr-logo.png"
@@ -144,7 +144,7 @@ export default function MobileHomeScreen({
           />
         </div>
         <p className="text-gray-400 text-sm">Say Hello to GPT Researcher, your AI partner for instant insights and comprehensive research</p>
-      </div>
+      </div> */}
 
       {/* Search Box */}
       <div className="px-4 md:px-8 w-full max-w-lg mx-auto">

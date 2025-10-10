@@ -38,7 +38,7 @@ export default function Home() {
     const defaultSettings = {
       report_type: "research_report",
       report_source: "web",
-      tone: "Objective",
+      tone: "Formal",
       domains: [],
       defaultReportType: "research_report",
       layoutType: 'copilot',

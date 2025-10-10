@@ -78,7 +78,7 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
       {/* Panel Header */}
       <div className="flex justify-between items-center px-2 py-3 border-b border-gray-800/60 bg-gray-900/40">
         {/* Left side */}
-        <div className="flex items-center">
+        {/* <div className="flex items-center">
           <a href="/" className="mr-3">
             <img
               src="/img/gptr-logo.png"
@@ -91,7 +91,7 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
           <h2 className="text-base font-medium text-gray-200">
             GPT Researcher
           </h2>
-        </div>
+        </div> */}
         
         {/* Right side */}
         <div className="flex items-center gap-3">
