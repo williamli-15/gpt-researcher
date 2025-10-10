@@ -25,14 +25,14 @@ services:
       - key: TAVILY_API_KEY
         sync: false
 
-    # Optional but recommended: Persistent disks to save generated reports
-    disks:
-      - name: gptr-outputs
-        mountPath: /usr/src/app/outputs # Mounts a disk to the 'outputs' folder inside the container
-        sizeGB: 1
-      - name: gptr-logs
-        mountPath: /usr/src/app/logs
-        sizeGB: 1
+    # # Optional but recommended: Persistent disks to save generated reports
+    # disks:
+    #   - name: gptr-outputs
+    #     mountPath: /usr/src/app/outputs # Mounts a disk to the 'outputs' folder inside the container
+    #     sizeGB: 1
+    #   - name: gptr-logs
+    #     mountPath: /usr/src/app/logs
+    #     sizeGB: 1
 
   #-------------------------------------------------------------------#
   # Service 2: The Next.js Frontend (Your Customized UI)
