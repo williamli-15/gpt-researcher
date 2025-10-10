@@ -1,0 +1,55 @@
+# render.yaml
+# This Blueprint defines the two services needed to run the full GPT Researcher application.
+
+services:
+  #-------------------------------------------------------------------#
+  # Service 1: The Python Backend (API)
+  # This runs the main GPT Researcher logic in a Docker container.
+  #-------------------------------------------------------------------#
+  - type: web
+    name: gpt-researcher-backend
+    region: ohio
+    env: docker # Specifies that we're deploying a Docker container
+    # IMPORTANT: Replace YOUR_GITHUB_USERNAME with your actual GitHub username!
+    repo: https://github.com/YOUR_GITHUB_USERNAME/gpt-researcher.git
+    dockerfilePath: ./Dockerfile # Path to the backend's Dockerfile in the repo
+    healthCheckPath: / # OnRender will check this path to see if the service is live
+    envVars:
+      - key: PORT
+        value: 8000 # The internal port the Python app runs on
+      - key: PYTHON_VERSION
+        value: 3.11.4
+      # --- Add your secret keys in the OnRender Dashboard, NOT here ---
+      - key: OPENAI_API_KEY
+        sync: false # 'sync: false' tells OnRender you will set this value securely in the dashboard
+      - key: TAVILY_API_KEY
+        sync: false
+
+    # Optional but recommended: Persistent disks to save generated reports
+    disks:
+      - name: gptr-outputs
+        mountPath: /usr/src/app/outputs # Mounts a disk to the 'outputs' folder inside the container
+        sizeGB: 1
+      - name: gptr-logs
+        mountPath: /usr/src/app/logs
+        sizeGB: 1
+
+  #-------------------------------------------------------------------#
+  # Service 2: The Next.js Frontend (Your Customized UI)
+  # This runs the Next.js application in a separate Docker container.
+  #-------------------------------------------------------------------#
+  - type: web
+    name: dmresearcher
+    env: docker
+    # IMPORTANT: Replace YOUR_GITHUB_USERNAME with your actual GitHub username!
+    repo: https://github.com/YOUR_GITHUB_USERNAME/gpt-researcher.git
+    dockerfilePath: ./frontend/nextjs/Dockerfile # Path to the frontend's Dockerfile
+    envVars:
+      - key: PORT
+        value: 3000 # The internal port the Next.js app runs on
+      # --- This is the magic that connects the frontend to the backend ---
+      - key: NEXT_PUBLIC_GPTR_API_URL
+        fromService:
+          type: web
+          name: gpt-researcher-backend # Must match the 'name' of the backend service above
+          property: url # Injects the public URL of the backend service
