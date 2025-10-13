@@ -11,7 +11,7 @@ DEFAULT_CONFIG: BaseConfig = {
     "SMART_TOKEN_LIMIT": 6000,
     "STRATEGIC_TOKEN_LIMIT": 4000,
     "BROWSE_CHUNK_MAX_LENGTH": 8192,
-    "CURATE_SOURCES": False,
+    "CURATE_SOURCES": True,
     "SUMMARY_TOKEN_LIMIT": 700,
     "TEMPERATURE": 0.4,
     "USER_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0",
@@ -26,6 +26,69 @@ DEFAULT_CONFIG: BaseConfig = {
     "MAX_SUBTOPICS": 3,
     "LANGUAGE": "english",
     "REPORT_SOURCE": "web",
+    # --- ADD YOUR NEW DEFAULT DOMAIN LIST HERE ---
+    "QUERY_DOMAINS": [
+        # == Top-Level National & International Dental Associations ==
+        "ada.org",              # American Dental Association (USA)
+        "bda.org",              # British Dental Association (UK)
+        "cda-adc.ca",           # Canadian Dental Association
+        "fdiworlddental.org",   # FDI World Dental Federation (Global)
+
+        # == Official U.S. Dental Specialty Organizations (All 12) ==
+        "asda.org",             # Anesthesiology
+        "aaphd.org",            # Public Health
+        "aae.org",              # Endodontics
+        "aaomp.org",            # Oral Pathology
+        "aaomr.org",            # Oral Radiology
+        "aaoms.org",            # Oral Surgery
+        "aaom.com",             # Oral Medicine
+        "aaop.org",             # Orofacial Pain
+        "aaoinfo.org",          # Orthodontics
+        "aapd.org",             # Pediatric Dentistry
+        "perio.org",            # Periodontics
+        "prosthodontics.org",   # Prosthodontics
+
+        # == Core Research Databases & Government Bodies ==
+        "pubmed.ncbi.nlm.nih.gov",   # PubMed (precise)
+        "pmc.ncbi.nlm.nih.gov",      # PubMed Central full text
+        "cochranelibrary.com",       # Cochrane Reviews
+        "cochrane.org",              # Cochrane Oral Health (news/summaries)
+        "nidcr.nih.gov",        # US National Institute of Dental & Craniofacial Research
+        "cdc.gov",              # Centers for Disease Control and Prevention
+        "who.int",              # World Health Organization
+
+        # == Major Scientific Publishers (Hosts the journals you listed) ==
+        "onlinelibrary.wiley.com",        # Hosts Periodontology 2000, IEJ, JCP, COIR
+        "sciencedirect.com",            # Hosts Dental Materials, Journal of Dentistry, etc.
+        "nature.com",                   # Hosts International Journal of Oral Science
+        "journals.sagepub.com",         # Hosts Journal of Dental Research
+        "link.springer.com",            # Main Springer site
+        "progressinorthodontics.springeropen.com", # Specific host for Progress in Orthodontics
+
+        "tandfonline.com",              # Taylor & Francis, another major publisher
+        "quintpub.com",              # Quintessence Publishing, respected in dentistry
+        "iadr.org",                  # Association materials & policy (not a publisher)
+
+        # == DOI Resolver (helps land on the real article page) ==
+        "doi.org",
+
+        # # == High-Authority Guideline Producers ==
+        # "nice.org.uk",               # NICE guidance (oral/dental)
+        # "sign.ac.uk",                # SIGN dental guidelines
+        # "sdcep.org.uk",              # SDCEP dental guidance
+        # "efp.org",                   # EFP S3 perio guidelines
+        # "eapd.eu",                   # EAPD guidance
+        # "ahajournals.org",           # AHA IE prophylaxis statements (cross-discipline)
+
+        # == Optional discovery-only (consider moving to a separate list) ==
+        # "scholar.google.com",
+        # "doaj.org",
+        # "frontiersin.org",
+        # "mdpi.com"
+       
+    ],
+    # --- END OF YOUR ADDITION ---
+    
     "DOC_PATH": "./my-docs",
     "PROMPT_FAMILY": "default",
     "LLM_KWARGS": {},

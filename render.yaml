@@ -44,6 +44,7 @@ services:
     # IMPORTANT: Replace YOUR_GITHUB_USERNAME with your actual GitHub username!
     repo: https://github.com/williamli-15/gpt-researcher.git
     dockerfilePath: ./frontend/nextjs/Dockerfile # Path to the frontend's Dockerfile
+    dockerBuildContext: ./frontend/nextjs
     envVars:
       - key: PORT
         value: 3000 # The internal port the Next.js app runs on
