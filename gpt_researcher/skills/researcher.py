@@ -520,7 +520,7 @@ class ResearchConductor:
                     await stream_output(
                         "logs",
                         "context_combined",
-                        f"📚 Combined research context: {mcp_count} MCP sources{cache_status}, {'web content' if web_available else 'no web content'}",
+                        f"📚 Combined research context: ",
                         self.researcher.websocket,
                     )
             else:

@@ -1,41 +1,17 @@
 services:
-  # 1) Backend (FastAPI)
   - type: web
-    name: gpt-researcher-backend
+    name: opendm # You can name this whatever you like
     runtime: docker
-    region: ohio
-    dockerfilePath: ./Dockerfile
-    # dockerContext defaults to repo root; include it if your Dockerfile isn’t at the root:
-    # dockerContext: .
-    healthCheckPath: /docs
+    region: ohio # Or your preferred region
+    plan: standard # Or your preferred plan
+    dockerfilePath: ./Dockerfile.fullstack
+    dockerContext: .
+    healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION
         value: "3.11"
-      # Prefer letting the app read $PORT; ensure your CMD uses it (uvicorn ... --port $PORT)
-      # - key: PORT
-      #   value: "8000"
-      # Secrets: Render will prompt on first deploy
+      # You will add your secrets directly in the Render dashboard
       - key: OPENAI_API_KEY
-        sync: false
+        fromSecret: true
       - key: TAVILY_API_KEY
-        sync: false
-
-  # 2) Frontend (Next.js)
-  - type: web
-    name: dmresearcher
-    runtime: docker
-    region: ohio
-    dockerfilePath: ./frontend/nextjs/Dockerfile
-    dockerContext: ./frontend/nextjs
-    healthCheckPath: /
-    envVars:
-      # This must be PUBLIC, because it’s bundled into the browser.
-      # Pull the backend’s public URL automatically:
-      - key: NEXT_PUBLIC_GPTR_API_URL
-        fromService:
-          name: gpt-researcher-backend
-          type: web
-          envVarKey: RENDER_EXTERNAL_URL
-      # Optional: only if your Dockerfile/CMD respects PORT
-      # - key: PORT
-      #   value: "3000"
+        fromSecret: true
