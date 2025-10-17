@@ -100,22 +100,22 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     <div className="flex flex-col h-full">
       <div className="flex-1 overflow-y-auto p-4 space-y-4 mb-4 custom-scrollbar">
         {renderedMessages.length === 0 ? (
-          <div className="text-center p-8 rounded-lg bg-gradient-to-r from-gray-900/5 to-gray-800/5 border border-gray-300/20 backdrop-blur-sm relative overflow-hidden">
+          <div className="text-center p-8 rounded-lg bg-white border border-gray-200 shadow-sm relative overflow-hidden">
             {/* Ambient decoration */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500/5 via-purple-500/5 to-cyan-500/5 blur-xl opacity-30 animate-pulse"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary-500/10 via-primary-400/10 to-primary-700/10 blur-xl opacity-30 animate-pulse"></div>
             
             {/* Icon */}
             <div className="w-16 h-16 mx-auto mb-4 relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-teal-400/30 to-cyan-400/30 rounded-full blur-md animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-400/30 to-primary-600/30 rounded-full blur-md animate-pulse"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
               </div>
             </div>
             
-            <h3 className="text-lg font-medium text-white mb-2">Ask a question about this research report</h3>
-            <p className="text-sm text-gray-400 max-w-md mx-auto">
+            <h3 className="text-lg font-medium text-gray-900 mb-2">Ask a question about this research report</h3>
+            <p className="text-sm text-gray-600 max-w-md mx-auto">
               The AI has analyzed all the content and is ready to help you explore the findings. 
               Ask anything about the research, request summaries, or dig deeper into specific topics.
             </p>
@@ -130,15 +130,15 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
                 <div 
                   className={`max-w-[80%] p-3 rounded-lg shadow-md ${
                     msg.role === 'user' 
-                      ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white shadow-teal-500/20' 
-                      : 'bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-gray-700/30'
+                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-[rgba(65,125,192,0.25)]' 
+                      : 'bg-gray-100 text-gray-900 border border-gray-200 shadow-sm'
                   } relative overflow-hidden group transition-all duration-300 hover:shadow-lg`}
                 >
                   {/* Add subtle animated gradient effect */}
                   <div className={`absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300 ${
                     msg.role === 'user' 
-                      ? 'bg-gradient-to-br from-teal-300/40 via-transparent to-cyan-300/30' 
-                      : 'bg-gradient-to-br from-indigo-400/30 via-transparent to-purple-400/20'
+                      ? 'bg-gradient-to-br from-primary-300/40 via-transparent to-primary-100/30' 
+                      : 'bg-gradient-to-br from-white/40 via-transparent to-primary-100/30'
                   } animate-pulse pointer-events-none`}></div>
                   
                   <div 
@@ -152,50 +152,50 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
             {/* Skeleton loader for assistant response */}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="max-w-[80%] p-3 rounded-lg shadow-md bg-gradient-to-r from-gray-800 to-gray-900 text-white shadow-gray-700/30 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/30 via-transparent to-purple-400/20 opacity-20 animate-pulse"></div>
+                <div className="max-w-[80%] p-3 rounded-lg shadow-md bg-gray-100 text-gray-900 border border-gray-200 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-primary-100/40 opacity-20 animate-pulse"></div>
                   <div className="markdown-content text-sm sm:text-base relative z-10">
                     {/* Heading */}
-                    <div className="h-7 bg-gray-700/50 rounded-md w-3/5 mb-4 animate-pulse"></div>
+                    <div className="h-7 bg-gray-200 rounded-md w-3/5 mb-4 animate-pulse"></div>
                     
                     {/* Paragraph */}
                     <div className="space-y-2 mb-4">
-                      <div className="h-4 bg-gray-700/50 rounded-full w-full animate-pulse"></div>
-                      <div className="h-4 bg-gray-700/50 rounded-full w-[95%] animate-pulse"></div>
-                      <div className="h-4 bg-gray-700/50 rounded-full w-[98%] animate-pulse"></div>
-                      <div className="h-4 bg-gray-700/50 rounded-full w-[90%] animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-full animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-[95%] animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-[98%] animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-[90%] animate-pulse"></div>
                     </div>
                     
                     {/* List items */}
                     <div className="space-y-2 mb-4">
                       <div className="flex">
-                        <div className="h-4 w-4 rounded-full bg-gray-700/50 mt-1 mr-2 animate-pulse"></div>
-                        <div className="h-4 bg-gray-700/50 rounded-full w-[70%] animate-pulse"></div>
+                        <div className="h-4 w-4 rounded-full bg-gray-200 mt-1 mr-2 animate-pulse"></div>
+                        <div className="h-4 bg-gray-200 rounded-full w-[70%] animate-pulse"></div>
                       </div>
                       <div className="flex">
-                        <div className="h-4 w-4 rounded-full bg-gray-700/50 mt-1 mr-2 animate-pulse"></div>
-                        <div className="h-4 bg-gray-700/50 rounded-full w-[80%] animate-pulse"></div>
+                        <div className="h-4 w-4 rounded-full bg-gray-200 mt-1 mr-2 animate-pulse"></div>
+                        <div className="h-4 bg-gray-200 rounded-full w-[80%] animate-pulse"></div>
                       </div>
                       <div className="flex">
-                        <div className="h-4 w-4 rounded-full bg-gray-700/50 mt-1 mr-2 animate-pulse"></div>
-                        <div className="h-4 bg-gray-700/50 rounded-full w-[75%] animate-pulse"></div>
+                        <div className="h-4 w-4 rounded-full bg-gray-200 mt-1 mr-2 animate-pulse"></div>
+                        <div className="h-4 bg-gray-200 rounded-full w-[75%] animate-pulse"></div>
                       </div>
                     </div>
                     
                     {/* Code block */}
-                    <div className="rounded-md bg-gray-800/70 p-3 mb-4">
+                    <div className="rounded-md bg-gray-200 p-3 mb-4">
                       <div className="space-y-2">
-                        <div className="h-4 bg-gray-700/60 rounded-full w-[85%] animate-pulse"></div>
-                        <div className="h-4 bg-gray-700/60 rounded-full w-[90%] animate-pulse"></div>
-                        <div className="h-4 bg-gray-700/60 rounded-full w-[80%] animate-pulse"></div>
+                        <div className="h-4 bg-gray-300 rounded-full w-[85%] animate-pulse"></div>
+                        <div className="h-4 bg-gray-300 rounded-full w-[90%] animate-pulse"></div>
+                        <div className="h-4 bg-gray-300 rounded-full w-[80%] animate-pulse"></div>
                       </div>
                     </div>
                     
                     {/* Final paragraph */}
                     <div className="space-y-2">
-                      <div className="h-4 bg-gray-700/50 rounded-full w-[88%] animate-pulse"></div>
-                      <div className="h-4 bg-gray-700/50 rounded-full w-[92%] animate-pulse"></div>
-                      <div className="h-4 bg-gray-700/50 rounded-full w-[60%] animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-[88%] animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-[92%] animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded-full w-[60%] animate-pulse"></div>
                     </div>
                   </div>
                 </div>
@@ -206,7 +206,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         <div ref={messagesEndRef} />
       </div>
       
-      <div className="p-4 border-t border-gray-700">
+      <div className="p-4 border-t border-gray-200 bg-white">
         <ChatInput
           promptValue={promptValue}
           setPromptValue={setPromptValue}

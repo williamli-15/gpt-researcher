@@ -12,7 +12,7 @@ export default function Sources({
   if (compact) {
     // Compact version for chat responses
     return (
-      <div className="max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-300/10">
+      <div className="max-h-[200px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-200">
         <div className="flex w-full flex-wrap content-center items-center gap-2">
           {sources.map((source) => {
             // Extract domain from URL
@@ -30,7 +30,7 @@ export default function Sources({
                 href={source.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-flex items-center gap-1.5 px-2 py-1 text-xs bg-gray-800/60 text-gray-300 hover:text-teal-300 hover:bg-gray-800/90 rounded border border-gray-700/40 transition-colors"
+                className="inline-flex items-center gap-1.5 px-2 py-1 text-xs bg-gray-100 text-gray-700 hover:text-primary-600 hover:bg-gray-200 rounded border border-gray-200 transition-colors"
                 title={source.name}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,14 +49,14 @@ export default function Sources({
 
   // Full version for research results
   return (
-    <div className="container h-auto w-full shrink-0 rounded-lg border border-solid border-gray-700/40 bg-black/30 backdrop-blur-md shadow-lg p-5">
+    <div className="container h-auto w-full shrink-0 rounded-lg border border-solid border-gray-200 bg-white shadow-lg p-5">
       <div className="flex items-start gap-4 pb-3 lg:pb-3.5">
         <img src="/img/browser.svg" alt="sources" width={24} height={24} />
-        <h3 className="text-base font-bold uppercase leading-[152.5%] text-white">
+        <h3 className="text-base font-bold uppercase leading-[152.5%] text-gray-900">
           {sources.length} Sources{" "}
         </h3>
       </div>
-      <div className="overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-300/10">
+      <div className="overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-200">
         <div className="flex w-full max-w-[890px] flex-wrap content-center items-center gap-[15px] pb-2">
           {sources.length > 0 ? (
             sources.map((source) => (
@@ -64,12 +64,12 @@ export default function Sources({
             ))
           ) : (
             <>
-              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-300/20" />
-              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-300/20" />
-              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-300/20" />
-              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-300/20" />
-              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-300/20" />
-              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-300/20" />
+              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-200" />
+              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-200" />
+              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-200" />
+              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-200" />
+              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-200" />
+              <div className="h-20 w-[260px] max-w-sm animate-pulse rounded-md bg-gray-200" />
             </>
           )}
         </div>

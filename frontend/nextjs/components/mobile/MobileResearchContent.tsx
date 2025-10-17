@@ -209,24 +209,24 @@ export default function MobileResearchContent({
   const questionText = initialQuestion?.content || '';
 
   return (
-    <div className="flex flex-col h-[calc(100vh-3.5rem)] bg-gradient-to-b from-gray-900 to-gray-950">
+    <div className="flex flex-col h-[calc(100vh-3.5rem)] bg-gradient-to-b from-white to-white relative">
       {/* Status Bar - Shows when researching or can show share button */}
       {(localLoading || localProcessing || (currentResearchId && onShareClick)) && (
-        <div className="flex items-center justify-between px-4 py-2 bg-gray-800/90 border-b border-gray-700/50 backdrop-blur-sm">
+        <div className="flex items-center justify-between px-4 py-2 bg-white/95 border-b border-gray-200 backdrop-blur-sm shadow-sm">
           {/* Left side - status */}
           <div className="flex items-center">
             {(localLoading || localProcessing) && (
               <>
                 <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse mr-2"></div>
-                <span className="text-xs text-gray-300">
+                <span className="text-xs text-gray-600">
                   {localLoading ? "Researching..." : "Processing..."}
                 </span>
               </>
             )}
             {!localLoading && !localProcessing && currentResearchId && (
               <>
-                <div className="w-2 h-2 rounded-full bg-teal-500 mr-2"></div>
-                <span className="text-xs text-gray-300">Research complete</span>
+                <div className="w-2 h-2 rounded-full bg-primary-500 mr-2"></div>
+                <span className="text-xs text-gray-600">Research complete</span>
               </>
             )}
           </div>
@@ -235,7 +235,7 @@ export default function MobileResearchContent({
           {!localLoading && !localProcessing && currentResearchId && onShareClick && (
             <button 
               onClick={onShareClick}
-              className="flex items-center text-xs px-3 py-1.5 rounded-md bg-gradient-to-r from-teal-700/70 to-teal-600/70 text-teal-200 border border-teal-600/40 shadow-sm"
+              className="flex items-center text-xs px-3 py-1.5 rounded-md bg-primary-600 text-white border border-primary-500/50 shadow-sm hover:bg-primary-500 transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
@@ -268,7 +268,7 @@ export default function MobileResearchContent({
       
       {/* Subtle background pattern for premium feel */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent to-transparent pointer-events-none" style={{ 
-        backgroundImage: `radial-gradient(circle at 50% 10%, rgba(56, 189, 169, 0.03) 0%, transparent 70%), radial-gradient(circle at 80% 40%, rgba(56, 178, 169, 0.02) 0%, transparent 60%)` 
+        backgroundImage: `radial-gradient(circle at 50% 10%, rgba(65, 125, 192, 0.08) 0%, transparent 70%), radial-gradient(circle at 80% 40%, rgba(52, 103, 165, 0.05) 0%, transparent 60%)` 
       }}></div>
       
       {/* Mobile-specific features/styles */}

@@ -68,19 +68,19 @@ const ChatInput: FC<TChatInputProps> = ({
     <div className="relative">
       {/* Gradient ring with balanced glow */}
       <div 
-        className={`absolute -inset-0.5 rounded-lg bg-gradient-to-r from-[#0cdbb6]/50 via-[#1fd0f0]/40 to-[#06dbee]/50 blur-sm opacity-40 transition-opacity duration-300 ${isFocused || promptValue ? 'opacity-60' : 'opacity-30'}`}
+        className={`absolute -inset-0.5 rounded-lg bg-gradient-to-r from-[#417dc0]/40 via-[#3467a5]/30 to-[#22456d]/40 blur-sm opacity-40 transition-opacity duration-300 ${isFocused || promptValue ? 'opacity-60' : 'opacity-30'}`}
       />
       
       {/* Ambient glow effect - balanced size and opacity */}
       <div 
         className="absolute -inset-3 rounded-xl opacity-25"
         style={{
-          background: 'radial-gradient(circle at center, rgba(12, 219, 182, 0.15) 0%, rgba(6, 219, 238, 0.08) 40%, rgba(0, 0, 0, 0) 70%)',
+          background: 'radial-gradient(circle at center, rgba(65, 125, 192, 0.12) 0%, rgba(52, 103, 165, 0.06) 40%, rgba(255, 255, 255, 0) 70%)',
         }}
       />
       
       <form
-        className="mx-auto flex pt-2 pb-2 w-full items-center justify-between rounded-lg border border-gray-700/50 bg-gray-900/90 backdrop-blur-sm px-3 shadow-md relative overflow-hidden z-10"
+        className="mx-auto flex pt-2 pb-2 w-full items-center justify-between rounded-lg border border-gray-200 bg-white px-3 shadow-lg relative overflow-hidden z-10"
         onSubmit={(e) => {
           e.preventDefault();
           if (!disabled && promptValue.trim()) {
@@ -91,13 +91,13 @@ const ChatInput: FC<TChatInputProps> = ({
         }}
       >
         {/* Inner gradient blur effect - balanced opacity */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-teal-400/4 via-indigo-400/4 to-purple-400/4 blur-xl opacity-25 animate-pulse pointer-events-none"></div>
+        <div className="absolute -inset-1 bg-gradient-to-r from-primary-400/10 via-primary-500/10 to-primary-700/10 blur-xl opacity-20 animate-pulse pointer-events-none"></div>
         
         <textarea
           placeholder={placeholder}
           ref={textareaRef}
           className="focus-visible::outline-0 my-1 w-full pl-5 font-light not-italic leading-[normal] 
-          text-gray-300 placeholder-gray-400 outline-none focus-visible:ring-0 focus-visible:ring-offset-0 
+          text-gray-900 placeholder-gray-500 outline-none focus-visible:ring-0 focus-visible:ring-offset-0 
           sm:text-base min-h-[4em] resize-none relative z-10 bg-transparent"
           disabled={disabled}
           value={promptValue}
@@ -112,7 +112,7 @@ const ChatInput: FC<TChatInputProps> = ({
         <button
           disabled={disabled || !promptValue.trim()}
           type="submit"
-          className="relative flex h-[45px] w-[45px] shrink-0 items-center justify-center rounded-md bg-teal-600 hover:bg-gradient-to-br hover:from-[#0cdbb6] hover:via-[#1fd0f0] hover:to-[#06dbee] transition-all duration-300 disabled:opacity-50 disabled:hover:bg-teal-600/75 z-10 before:absolute before:inset-0 before:rounded-md before:bg-gradient-to-r before:from-teal-300/15 before:to-cyan-300/15 before:opacity-0 before:transition-opacity before:hover:opacity-100 before:-z-10 disabled:before:opacity-0 group"
+          className="relative flex h-[45px] w-[45px] shrink-0 items-center justify-center rounded-md bg-primary-600 hover:bg-gradient-to-br hover:from-[#417dc0] hover:via-[#3467a5] hover:to-[#22456d] transition-all duration-300 disabled:opacity-50 disabled:hover:bg-primary-600/75 z-10 before:absolute before:inset-0 before:rounded-md before:bg-gradient-to-r before:from-primary-300/15 before:to-primary-500/15 before:opacity-0 before:transition-opacity before:hover:opacity-100 before:-z-10 disabled:before:opacity-0 group"
         >
           {disabled && (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -139,8 +139,8 @@ const ChatInput: FC<TChatInputProps> = ({
       <div 
         className="absolute bottom-0 left-0 right-0 h-[2.5px] opacity-35 overflow-hidden"
         style={{
-          background: 'radial-gradient(ellipse at center, rgba(12, 219, 182, 0.5) 0%, rgba(6, 219, 238, 0.3) 25%, rgba(6, 219, 238, 0.08) 50%, rgba(0, 0, 0, 0) 75%)',
-          boxShadow: '0 0 8px 1px rgba(12, 219, 182, 0.25), 0 0 15px 2px rgba(6, 219, 238, 0.08)'
+          background: 'radial-gradient(ellipse at center, rgba(65, 125, 192, 0.4) 0%, rgba(52, 103, 165, 0.25) 25%, rgba(34, 69, 109, 0.08) 50%, rgba(255, 255, 255, 0) 75%)',
+          boxShadow: '0 0 8px 1px rgba(65, 125, 192, 0.25), 0 0 15px 2px rgba(34, 69, 109, 0.12)'
         }}
       />
     </div>

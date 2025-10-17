@@ -64,21 +64,27 @@ DEFAULT_CONFIG: BaseConfig = {
         "journals.sagepub.com",         # Hosts Journal of Dental Research
         "link.springer.com",            # Main Springer site
         "progressinorthodontics.springeropen.com", # Specific host for Progress in Orthodontics
+        "academic.oup.com",           # European Journal of Orthodontic
 
         "tandfonline.com",              # Taylor & Francis, another major publisher
         "quintpub.com",              # Quintessence Publishing, respected in dentistry
         "iadr.org",                  # Association materials & policy (not a publisher)
 
+        "jada.ada.org",           # (JADA homepage/links alongside the ScienceDirect host). 
+        "karger.com",           #  (e.g., Caries Research).
+        
         # == DOI Resolver (helps land on the real article page) ==
         "doi.org",
 
         # # == High-Authority Guideline Producers ==
-        # "nice.org.uk",               # NICE guidance (oral/dental)
-        # "sign.ac.uk",                # SIGN dental guidelines
-        # "sdcep.org.uk",              # SDCEP dental guidance
-        # "efp.org",                   # EFP S3 perio guidelines
-        # "eapd.eu",                   # EAPD guidance
-        # "ahajournals.org",           # AHA IE prophylaxis statements (cross-discipline)
+        "nice.org.uk",               # NICE guidance (oral/dental)
+        "sign.ac.uk",                # SIGN dental guidelines
+        "sdcep.org.uk",              # SDCEP dental guidance
+        "efp.org",                   # EFP S3 perio guidelines
+        "eapd.eu",                   # EAPD guidance
+        "ahajournals.org",           # AHA IE prophylaxis statements (cross-discipline)
+
+
 
         # == Optional discovery-only (consider moving to a separate list) ==
         # "scholar.google.com",

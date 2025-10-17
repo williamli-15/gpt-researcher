@@ -36,13 +36,13 @@ const ChatMessage = memo(({
   metadata?: any 
 }) => {
   if (type === 'question') {
-    // User question - now with teal/turquoise color to match theme
+    // User question bubble styled with the brand blue palette
     return (
       <div className="flex items-start justify-end space-x-2 py-1 max-w-full animate-fade-in">
-        <div className="flex-1 bg-teal-600/80 border border-teal-500/50 rounded-2xl px-4 py-3 text-sm text-white font-medium ml-10 shadow-md">
+        <div className="flex-1 bg-primary-600 border border-primary-500 rounded-2xl px-4 py-3 text-sm text-white font-medium ml-10 shadow-md">
           {content}
         </div>
-        <div className="w-8 h-8 rounded-full bg-teal-600 flex items-center justify-center flex-shrink-0 shadow-md">
+        <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center flex-shrink-0 shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="9" r="5" />
             <path d="M3,20 c0,-4 8,-4 8,-4 s8,0 8,4" />
@@ -76,15 +76,15 @@ const ChatMessage = memo(({
     const allSources = [...webSources, ...directSources];
     const hasSources = allSources.length > 0;
     
-    // AI response - with darker color
+    // AI response - light card style
     return (
       <div className="flex flex-col space-y-2 py-1 max-w-full animate-fade-in">
         <div className="flex items-start space-x-2">
           {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
             <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
           </div> */}
-          <div className="flex-1 ai-message-bubble rounded-2xl px-4 py-3 text-sm text-white mr-4 shadow-lg">
-            <div className="markdown-content prose prose-sm prose-invert max-w-none">
+          <div className="flex-1 ai-message-bubble rounded-2xl px-4 py-3 text-sm text-gray-900 mr-4 shadow-lg border border-gray-200">
+            <div className="markdown-content prose prose-sm max-w-none">
               <div dangerouslySetInnerHTML={{ __html: html }} />
             </div>
             
@@ -92,9 +92,9 @@ const ChatMessage = memo(({
             {metadata && 
              metadata.sources && 
              metadata.sources.length > 0 && (
-              <div className="mt-2 pt-2 border-t border-gray-700/50 text-xs text-gray-200">
+              <div className="mt-2 pt-2 border-t border-gray-200 text-xs text-gray-700">
                 <details className="group">
-                  <summary className="cursor-pointer hover:text-white flex items-center">
+                  <summary className="cursor-pointer hover:text-primary-600 flex items-center">
                     <span className="mr-1">Sources</span>
                     <svg className="h-3 w-3 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
@@ -107,7 +107,7 @@ const ChatMessage = memo(({
                           href={source.url} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="text-teal-300 hover:text-teal-200 hover:underline truncate block"
+                          className="text-primary-600 hover:text-primary-700 hover:underline truncate block"
                         >
                           {source.title || source.url}
                         </a>
@@ -124,14 +124,14 @@ const ChatMessage = memo(({
         {hasSources && (
           <div className="ml-10 mr-4">
             <div className="flex items-center gap-2 mb-2">
-              <div className="flex items-center justify-center w-5 h-5 rounded-md bg-blue-500/20 border border-blue-500/30">
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400">
+              <div className="flex items-center justify-center w-5 h-5 rounded-md bg-primary-100 border border-primary-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-600">
                   <circle cx="12" cy="12" r="10"></circle>
                   <line x1="2" y1="12" x2="22" y2="12"></line>
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                 </svg>
               </div>
-              <span className="text-xs font-medium text-blue-300">Sources</span>
+              <span className="text-xs font-medium text-primary-600">Sources</span>
             </div>
             <div className="max-h-[180px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-300/10">
               <div className="flex w-full flex-wrap content-center items-center gap-2">
@@ -151,7 +151,7 @@ const ChatMessage = memo(({
                       href={source.url} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs bg-gray-800/60 text-gray-300 hover:text-teal-300 hover:bg-gray-800/90 rounded border border-gray-700/40 transition-colors"
+                      className="inline-flex items-center gap-1 px-1.5 py-0.5 text-xs bg-gray-100 text-gray-700 hover:text-primary-600 hover:bg-gray-200 rounded border border-gray-200 transition-colors"
                       title={source.name}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -394,7 +394,7 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
   };
 
   return (
-    <div className={cn("flex flex-col h-full bg-gradient-to-b from-gray-900 to-gray-950", className)}>
+    <div className={cn("flex flex-col h-full bg-gradient-to-b from-white to-white", className)}>
       {/* Chat Messages Area */}
       <div 
         ref={chatContainerRef}
@@ -406,7 +406,7 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
             {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
               <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
             </div> */}
-            <div className="flex-1 ai-message-bubble rounded-2xl p-4 text-sm text-white shadow-lg">
+            <div className="flex-1 ai-message-bubble rounded-2xl p-4 text-sm text-gray-900 shadow-lg border border-gray-200">
               <p>Hi there! I&apos;m your research assistant. Type your question and I&apos;ll help you find information and insights.</p>
             </div>
           </div>
@@ -418,7 +418,7 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
             {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
               <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
             </div> */}
-            <div className="flex-1 ai-message-bubble rounded-2xl p-4 text-sm text-white shadow-lg">
+            <div className="flex-1 ai-message-bubble rounded-2xl p-4 text-sm text-gray-900 shadow-lg border border-gray-200">
               <p>I&apos;m researching your question. This may take a moment...</p>
               <div className="mt-2 flex justify-center">
                 <LoadingDots />
@@ -444,11 +444,11 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
             {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center flex-shrink-0 shadow-md">
               <img src="/img/gptr-logo.png" alt="AI" className="w-6 h-6" />
             </div> */}
-            <div className="flex-1 ai-message-bubble rounded-2xl px-4 py-3 text-white">
+            <div className="flex-1 ai-message-bubble rounded-2xl px-4 py-3 text-gray-900 border border-gray-200">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse-slow"></div>
-                <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse-slow animation-delay-200"></div>
-                <div className="w-2 h-2 bg-gray-300 rounded-full animate-pulse-slow animation-delay-400"></div>
+                <div className="w-2 h-2 bg-primary-300 rounded-full animate-pulse-slow"></div>
+                <div className="w-2 h-2 bg-primary-300 rounded-full animate-pulse-slow animation-delay-200"></div>
+                <div className="w-2 h-2 bg-primary-300 rounded-full animate-pulse-slow animation-delay-400"></div>
               </div>
             </div>
           </div>
@@ -456,7 +456,7 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
       </div>
       
       {/* Input Area */}
-      <div className={`px-3 py-3 border-t border-gray-800 ${inputFocused ? 'bg-gray-800/90' : 'bg-gray-900/90'} backdrop-blur-sm transition-colors duration-200 safe-bottom`}>
+      <div className={`px-3 py-3 border-t border-gray-200 ${inputFocused ? 'bg-white' : 'bg-white'} backdrop-blur-sm transition-colors duration-200 safe-bottom`}>
         {!isStopped ? (
           <form onSubmit={handleSubmit} className="relative">
             <textarea
@@ -467,7 +467,7 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
               onFocus={() => setInputFocused(true)}
               onBlur={() => setInputFocused(false)}
               placeholder="Ask a research question..."
-              className="w-full px-4 py-3 pr-14 bg-gray-800/90 border border-gray-700 focus:border-teal-500 rounded-xl resize-none text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-500/50 transition-all shadow-sm"
+              className="w-full px-4 py-3 pr-14 bg-white border border-gray-200 focus:border-primary-500 rounded-xl resize-none text-gray-900 text-sm placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-primary-500/50 transition-all shadow-sm"
               style={{ minHeight: '48px', maxHeight: '120px' }}
               disabled={isProcessingChat || isSubmitting}
             />
@@ -477,8 +477,8 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
               disabled={!chatPromptValue.trim() || isProcessingChat || isSubmitting}
               className={`absolute right-3 bottom-[50%] translate-y-[50%] w-9 h-9 flex items-center justify-center rounded-full ${
                 chatPromptValue.trim() && !isProcessingChat && !isSubmitting
-                  ? 'bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-400 hover:to-teal-500 text-white shadow-md'
-                  : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                  ? 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-400 hover:to-primary-500 text-white shadow-md'
+                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
               } transition-all duration-200`}
             >
               {isProcessingChat || isSubmitting ? (
@@ -494,12 +494,12 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
             </button>
           </form>
         ) : (
-          <div className="text-center p-3 text-gray-300 bg-gray-800/60 rounded-xl border border-gray-700/50 text-sm shadow-sm">
+          <div className="text-center p-3 text-gray-600 bg-gray-100 rounded-xl border border-gray-200 text-sm shadow-sm">
             Research has been stopped. 
             {onNewResearch && (
               <button 
                 onClick={onNewResearch} 
-                className="ml-2 text-teal-400 hover:text-teal-300 hover:underline font-medium"
+                className="ml-2 text-primary-600 hover:text-primary-700 hover:underline font-medium"
               >
                 Start new research
               </button>
@@ -552,22 +552,22 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
         }
         
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(17, 24, 39, 0.1);
+          background: #e5e7eb;
         }
         
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(75, 85, 99, 0.5);
+          background: rgba(65, 125, 192, 0.4);
           border-radius: 20px;
         }
         
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(75, 85, 99, 0.7);
+          background: rgba(43, 85, 135, 0.6);
         }
         
         /* AI message bubble with subtle gradient */
         .ai-message-bubble {
-          background: linear-gradient(145deg, rgba(31, 41, 55, 0.95), rgba(17, 24, 39, 0.9));
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05);
+          background: linear-gradient(145deg, rgba(249, 250, 251, 1), rgba(243, 244, 246, 1));
+          box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(65, 125, 192, 0.08);
           position: relative;
           overflow: hidden;
         }
@@ -579,7 +579,7 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
           left: 0;
           right: 0;
           height: 40%;
-          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
           pointer-events: none;
           z-index: 0;
         }
@@ -599,14 +599,14 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
         }
         
         .markdown-content code {
-          background: rgba(0, 0, 0, 0.2);
+          background: rgba(241, 245, 249, 0.9);
           padding: 0.1em 0.3em;
           border-radius: 0.25rem;
           font-size: 0.875em;
         }
         
         .markdown-content pre {
-          background: rgba(0, 0, 0, 0.2);
+          background: rgba(241, 245, 249, 1);
           padding: 0.75rem;
           border-radius: 0.5rem;
           overflow-x: auto;
@@ -619,12 +619,13 @@ const MobileChatPanel: React.FC<MobileChatPanelProps> = ({
         }
         
         .markdown-content a {
-          color: #5eead4;
+          color: #417dc0;
           text-decoration: none;
         }
         
         .markdown-content a:hover {
           text-decoration: underline;
+          color: #2b5587;
         }
       `}</style>
     </div>

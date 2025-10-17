@@ -19,7 +19,7 @@ export default function Report({ answer, researchId }: { answer: string, researc
     }, [answer]);
     
     return (
-      <div className="container flex h-auto w-full shrink-0 gap-4 bg-black/30 backdrop-blur-md shadow-lg rounded-lg border border-solid border-gray-700/40 p-5">
+      <div className="container flex h-auto w-full shrink-0 gap-4 bg-white shadow-lg rounded-lg border border-solid border-gray-200 p-5">
         <div className="w-full">
           <div className="flex items-center justify-between pb-3">
             <div className="flex items-center gap-3">
@@ -33,11 +33,11 @@ export default function Report({ answer, researchId }: { answer: string, researc
                 strokeWidth={1.5} 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 
-                className="text-teal-200"
+                className="text-primary-600"
               >
                 <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              <h3 className="text-sm font-medium text-teal-200">Research Report</h3>
+              <h3 className="text-sm font-medium text-primary-600">Research Report</h3>
             </div>
             {answer && (
               <div className="flex items-center gap-3">
@@ -51,11 +51,11 @@ export default function Report({ answer, researchId }: { answer: string, researc
                   className="hover:opacity-80 transition-opacity duration-200"
                 >
                   <img
-                    src="/img/copy-white.svg"
+                    src="/img/copy.svg"
                     alt="copy"
                     width={20}
                     height={20}
-                    className="cursor-pointer text-white"
+                    className="cursor-pointer"
                   />
                 </button>
               </div>
@@ -63,15 +63,15 @@ export default function Report({ answer, researchId }: { answer: string, researc
           </div>
           
           <div className="flex flex-wrap content-center items-center gap-[15px] pl-5 pr-5">
-            <div className="w-full whitespace-pre-wrap text-base font-light leading-[152.5%] text-white log-message">
+            <div className="w-full whitespace-pre-wrap text-base font-light leading-[152.5%] text-gray-900 log-message">
               {answer ? (
-                <div className="markdown-content prose prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                <div className="markdown-content prose max-w-none" dangerouslySetInnerHTML={{ __html: htmlContent }} />
               ) : (
                 <div className="flex w-full flex-col gap-2">
-                  <div className="h-6 w-full animate-pulse rounded-md bg-gray-300/20" />
-                  <div className="h-6 w-[85%] animate-pulse rounded-md bg-gray-300/20" />
-                  <div className="h-6 w-[90%] animate-pulse rounded-md bg-gray-300/20" />
-                  <div className="h-6 w-[70%] animate-pulse rounded-md bg-gray-300/20" />
+                  <div className="h-6 w-full animate-pulse rounded-md bg-gray-200" />
+                  <div className="h-6 w-[85%] animate-pulse rounded-md bg-gray-200" />
+                  <div className="h-6 w-[90%] animate-pulse rounded-md bg-gray-200" />
+                  <div className="h-6 w-[70%] animate-pulse rounded-md bg-gray-200" />
                 </div>
               )}
             </div>

@@ -17,8 +17,8 @@ const SubQuestions: React.FC<SubQuestionsProps> = ({ metadata, handleClickSugges
           className="size-[24px]"
         />
       </div>
-      <div className="grow text-white">
-        <p className="pr-5 font-bold leading-[152%] text-white pb-[20px]">
+      <div className="grow text-gray-900">
+        <p className="pr-5 font-bold leading-[152%] text-gray-900 pb-[20px]">
           Pondering your question from several angles
         </p>
         <div className="flex flex-row flex-wrap items-center gap-2.5 pb-[20px]">

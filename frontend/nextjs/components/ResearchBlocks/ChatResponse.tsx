@@ -61,16 +61,16 @@ export default function ChatResponse({ answer, metadata }: ChatResponseProps) {
     };
   
     return (
-      <div className="container flex h-auto w-full shrink-0 gap-4 bg-black/30 backdrop-blur-md shadow-lg rounded-lg border border-solid border-gray-700/40 p-5">
+      <div className="container flex h-auto w-full shrink-0 gap-4 bg-white shadow-lg rounded-lg border border-solid border-gray-200 p-5">
         <div className="w-full">
           <div className="flex items-center justify-between pb-3">
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-6 h-6 rounded-md bg-teal-500/20 border border-teal-500/30">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-400">
+              <div className="flex items-center justify-center w-6 h-6 rounded-md bg-primary-100 border border-primary-200">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-600">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <h3 className="text-sm font-medium text-teal-200">Answer</h3>
+              <h3 className="text-sm font-medium text-primary-600">Answer</h3>
             </div>
             <button 
               onClick={copyToClipboard}
@@ -79,19 +79,19 @@ export default function ChatResponse({ answer, metadata }: ChatResponseProps) {
               title="Copy to clipboard"
             >
               <img
-                src="/img/copy-white.svg"
+                src="/img/copy.svg"
                 alt="copy"
                 width={20}
                 height={20}
-                className="cursor-pointer text-white"
+                className="cursor-pointer"
               />
             </button>
           </div>
           
           <div className="flex flex-wrap content-center items-center gap-[15px] pl-5 pr-5">
-            <div className="w-full whitespace-pre-wrap text-base font-light leading-[152.5%] text-white log-message">
+            <div className="w-full whitespace-pre-wrap text-base font-light leading-[152.5%] text-gray-900 log-message">
               <div 
-                className="markdown-content prose prose-invert max-w-none"
+                className="markdown-content prose max-w-none"
                 dangerouslySetInnerHTML={{ __html: htmlContent }}
               />
             </div>
@@ -99,16 +99,16 @@ export default function ChatResponse({ answer, metadata }: ChatResponseProps) {
           
           {/* Display web search sources if available */}
           {hasWebSources && webSources.length > 0 && (
-            <div className="mt-4 pt-3 border-t border-gray-700/30">
+            <div className="mt-4 pt-3 border-t border-gray-200">
               <div className="flex items-center gap-2 mb-2">
-                <div className="flex items-center justify-center w-5 h-5 rounded-md bg-blue-500/20 border border-blue-500/30">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-400">
+                <div className="flex items-center justify-center w-5 h-5 rounded-md bg-primary-100 border border-primary-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-600">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="2" y1="12" x2="22" y2="12"></line>
                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                   </svg>
                 </div>
-                <span className="text-xs font-medium text-blue-300">New Sources</span>
+                <span className="text-xs font-medium text-primary-600">New Sources</span>
               </div>
               <Sources sources={webSources} compact={true} />
             </div>

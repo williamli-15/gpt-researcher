@@ -1,6 +1,6 @@
 .markdown-content {
   /* Base styles */
-  color: white;
+  color: #111111;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 18px;
   line-height: 1.6;
@@ -79,19 +79,19 @@
 
   /* Links */
   a {
-    color: rgb(20, 184, 166);
+    color: #417dc0;
     text-decoration: underline;
     font-weight: 500;
     
     &:hover {
       opacity: 0.8;
-      color: rgb(13, 148, 136);
+      color: #3467a5;
     }
   }
 
   /* Code blocks */
   pre {
-    background-color: #1e1e1e;
+    background-color: #f3f4f6;
     padding: 1em;
     border-radius: 4px;
     overflow-x: auto;
@@ -102,17 +102,18 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
     padding: 0 0.4em;
-    background-color: #1e1e1e;
+    background-color: #f3f4f6;
+    color: #111111;
     border-radius: 3px;
   }
 
   /* Blockquotes */
   blockquote {
-    border-left: 4px solid rgb(20, 184, 166);
+    border-left: 4px solid #417dc0;
     margin: 0;
     padding-left: 1em;
     font-style: italic;
-    background-color: rgba(20, 184, 166, 0.1);
+    background-color: rgba(65, 125, 192, 0.08);
     border-radius: 0 4px 4px 0;
   }
 
@@ -121,54 +122,54 @@
     border-collapse: collapse;
     width: 100%;
     margin: 1em 0;
-    background-color: #111827; /* Dark background matching the site theme */
+    background-color: #ffffff;
     border-radius: 4px;
     overflow: hidden;
-    border: 2px solid #4B5563; /* Slightly thicker and lighter border for better visibility */
-    box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.1); /* Changed from purple to teal */
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 0 0 1px rgba(65, 125, 192, 0.05);
   }
 
   th, td {
-    border: 1px solid #4B5563; /* Lighter border color for better contrast */
+    border: 1px solid #e5e7eb;
     padding: 0.75em;
     text-align: left;
   }
 
   /* Add a slightly more visible outer border to the table */
   tr:first-child th {
-    border-top: 2px solid #4B5563;
+    border-top: 1px solid #e5e7eb;
   }
   
   tr:last-child td {
-    border-bottom: 2px solid #4B5563;
+    border-bottom: 1px solid #e5e7eb;
   }
   
   th:first-child, td:first-child {
-    border-left: 2px solid #4B5563;
+    border-left: 1px solid #e5e7eb;
   }
   
   th:last-child, td:last-child {
-    border-right: 2px solid #4B5563;
+    border-right: 1px solid #e5e7eb;
   }
 
   th {
-    background-color: #1f2937; /* Darker header background */
+    background-color: #f9fafb;
     font-weight: 600;
-    color: white; /* Changed from purple to white to match rest of content */
+    color: #111111;
   }
 
   tr:nth-child(even) {
-    background-color: #1a202c; /* Slightly lighter for alternating rows */
+    background-color: #f9fafb;
   }
 
   tr:hover {
-    background-color: #282c34; /* Highlight on hover */
+    background-color: #eef2ff;
   }
 
   /* Horizontal rule */
   hr {
     border: 0;
-    border-top: 1px solid #444;
+    border-top: 1px solid #e5e7eb;
     margin: 1.5em 0;
   }
 

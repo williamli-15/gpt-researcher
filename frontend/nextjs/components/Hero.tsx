@@ -114,7 +114,7 @@ const Hero: FC<THeroProps> = ({
         <motion.h1 
           variants={fadeInUp}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-medium text-center text-white mb-8 sm:mb-10 md:mb-12 px-4"
+          className="text-2xl sm:text-3xl md:text-4xl font-medium text-center text-gray-900 mb-8 sm:mb-10 md:mb-12 px-4"
         >
           What would you like to research next?
         </motion.h1>
@@ -126,8 +126,8 @@ const Hero: FC<THeroProps> = ({
           className="w-full max-w-[800px] pb-6 sm:pb-8 md:pb-10 px-4"
         >
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-teal-600/70 via-cyan-500/60 to-blue-600/70 rounded-xl blur-md opacity-60 group-hover:opacity-85 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
-            <div className="relative bg-black bg-opacity-20 backdrop-blur-sm rounded-xl ring-1 ring-gray-800/60">
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary-500/30 via-primary-500/20 to-primary-700/30 rounded-xl blur-md opacity-60 group-hover:opacity-85 transition duration-1000 group-hover:duration-200 animate-gradient-x"></div>
+            <div className="relative bg-white backdrop-blur-sm rounded-xl ring-1 ring-gray-200">
               <InputArea
                 promptValue={promptValue}
                 setPromptValue={setPromptValue}
@@ -142,7 +142,7 @@ const Hero: FC<THeroProps> = ({
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-6 text-center px-4"
           >
-            <p className="text-gray-400 text-sm font-light">
+            <p className="text-gray-600 text-sm font-light">
               AI may make mistakes. Verify important information and check sources.
             </p>
           </motion.div>
@@ -163,9 +163,9 @@ const Hero: FC<THeroProps> = ({
                 animate="visible"
                 transition={{ duration: 0.4, delay: 0.6 + (index * 0.1) }}
                 className="flex h-[38px] sm:h-[42px] cursor-pointer items-center justify-center gap-[6px] rounded-lg 
-                         border border-solid border-teal-500/30 bg-gradient-to-r from-teal-900/30 to-cyan-900/30 
-                         backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 hover:border-teal-500/60 hover:from-teal-900/40 
-                         hover:to-cyan-900/40 transition-all duration-300 hover:shadow-lg hover:shadow-teal-900/20 min-w-[100px]"
+                         border border-solid border-primary-500/30 bg-primary-50 
+                         backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 hover:border-primary-500/60 
+                         hover:bg-primary-100 transition-all duration-300 hover:shadow-lg hover:shadow-[rgba(65,125,192,0.15)] min-w-[100px]"
                 onClick={() => handleClickSuggestion(item?.name)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
@@ -175,9 +175,9 @@ const Hero: FC<THeroProps> = ({
                   alt={item.name}
                   width={18}
                   height={18}
-                  className="w-[18px] sm:w-[20px] opacity-80 filter invert brightness-100"
+                  className="w-[18px] sm:w-[20px] opacity-80"
                 />
-                <span className="text-xs sm:text-sm font-medium leading-[normal] text-gray-200">
+                <span className="text-xs sm:text-sm font-medium leading-[normal] text-gray-800">
                   {item.name}
                 </span>
               </motion.div>
@@ -199,8 +199,8 @@ const Hero: FC<THeroProps> = ({
             className="absolute inset-0"
             style={{
               opacity: 0.85,
-              background: 'radial-gradient(ellipse at center, rgba(12, 219, 182, 1) 0%, rgba(6, 219, 238, 0.7) 25%, rgba(6, 219, 238, 0.2) 50%, rgba(0, 0, 0, 0) 75%)',
-              boxShadow: '0 0 30px 6px rgba(12, 219, 182, 0.5), 0 0 60px 10px rgba(6, 219, 238, 0.25)'
+              background: 'radial-gradient(ellipse at center, rgba(65, 125, 192, 1) 0%, rgba(52, 103, 165, 0.7) 25%, rgba(34, 69, 109, 0.2) 50%, rgba(255, 255, 255, 0) 75%)',
+              boxShadow: '0 0 30px 6px rgba(65, 125, 192, 0.45), 0 0 60px 10px rgba(52, 103, 165, 0.2)'
             }}
           />
           

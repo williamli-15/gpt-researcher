@@ -131,7 +131,7 @@ export default function MobileHomeScreen({
   }, [handleKeyDown, handleSubmit]);
 
   return (
-    <div className="flex flex-col h-full w-full bg-gradient-to-b from-gray-900 to-gray-950 pb-16">
+    <div className="flex flex-col h-full w-full bg-gradient-to-b from-white to-white pb-16">
       {/* Header with logo and title */}
       {/* <div className="pt-10 px-6 text-center mb-8">
         <div className="flex justify-center mb-3">
@@ -149,11 +149,11 @@ export default function MobileHomeScreen({
       {/* Search Box */}
       <div className="px-4 md:px-8 w-full max-w-lg mx-auto">
         <div 
-          className={`relative bg-gray-800 border ${isFocused ? 'border-sky-500/70 input-glow-active' : 'border-gray-700/50 input-glow-subtle'} rounded-xl shadow-lg transition-all duration-300`}
+          className={`relative bg-white border ${isFocused ? 'border-primary-500/70 input-glow-active' : 'border-gray-200 input-glow-subtle'} rounded-xl shadow-lg transition-all duration-300`}
         >
           <textarea
             ref={textareaRef}
-            className="w-full bg-transparent text-gray-200 px-4 pt-4 pb-12 focus:outline-none resize-none rounded-xl"
+            className="w-full bg-transparent text-gray-900 placeholder-gray-500 px-4 pt-4 pb-12 focus:outline-none resize-none rounded-xl"
             placeholder={placeholder}
             value={promptValue}
             onChange={handlePromptChange}
@@ -170,9 +170,9 @@ export default function MobileHomeScreen({
               disabled={isLoading || isSubmitting || !promptValue.trim()}
               className={`rounded-full p-2 ${
                 isLoading || isSubmitting || !promptValue.trim() 
-                  ? 'bg-gray-700 text-gray-500' 
-                  : 'bg-sky-600 text-white hover:bg-sky-500'
-              } transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50`}
+                  ? 'bg-gray-200 text-gray-400' 
+                  : 'bg-primary-600 text-white hover:bg-primary-500'
+              } transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-60`}
               aria-label="Start research"
             >
               {isLoading || isSubmitting ? (
@@ -187,7 +187,7 @@ export default function MobileHomeScreen({
             </button>
           </div>
         </div>
-        <p className="text-xs text-gray-500 mt-2 text-center px-2">
+        <p className="text-xs text-gray-600 mt-2 text-center px-2">
           Enter any research topic or specific question
         </p>
       </div>
@@ -195,16 +195,16 @@ export default function MobileHomeScreen({
       {/* Recent research history */}
       {recentHistory.length > 0 && (
         <div className="mt-10 px-4">
-          <h2 className="text-sm font-medium text-gray-400 mb-3 px-2">Recent Research</h2>
+          <h2 className="text-sm font-medium text-gray-600 mb-3 px-2">Recent Research</h2>
           <div className="space-y-2">
             {recentHistory.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleHistoryItemClick(item.id)}
-                className="w-full bg-gray-800/60 hover:bg-gray-800 rounded-lg p-3 text-left transition-colors focus:outline-none focus:ring-2 focus:ring-gray-600"
+                className="w-full bg-white border border-gray-200 hover:bg-gray-100 rounded-lg p-3 text-left transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500/40"
               >
-                <h3 className="text-sm font-medium text-gray-200 line-clamp-1">{item.question}</h3>
-                <p className="text-xs text-gray-500 mt-1">
+                <h3 className="text-sm font-medium text-gray-900 line-clamp-1">{item.question}</h3>
+                <p className="text-xs text-gray-600 mt-1">
                   {new Date(item.timestamp || Date.now()).toLocaleString()}
                 </p>
               </button>
@@ -213,7 +213,7 @@ export default function MobileHomeScreen({
           <div className="mt-3 text-center">
             <a
               href="/history"
-              className="inline-block text-sm text-sky-400 hover:text-sky-300 transition-colors"
+              className="inline-block text-sm text-primary-600 hover:text-primary-700 transition-colors"
             >
               View all research
             </a>
@@ -223,19 +223,19 @@ export default function MobileHomeScreen({
 
       {/* Features or tips section */}
       <div className="mt-auto pb-6 pt-8 px-4">
-        <div className="bg-gray-800/40 border border-gray-700/50 rounded-xl p-4">
-          <h3 className="text-sm font-medium text-gray-300 mb-2">Research Tips</h3>
-          <ul className="text-xs text-gray-400 space-y-1.5">
+        <div className="bg-primary-50 border border-primary-100 rounded-xl p-4">
+          <h3 className="text-sm font-medium text-gray-900 mb-2">Research Tips</h3>
+          <ul className="text-xs text-gray-700 space-y-1.5">
             <li className="flex items-start">
-              <span className="text-sky-400 mr-1.5">•</span>
+              <span className="text-primary-500 mr-1.5">•</span>
               <span>Ask specific questions for better results</span>
             </li>
             <li className="flex items-start">
-              <span className="text-sky-400 mr-1.5">•</span>
+              <span className="text-primary-500 mr-1.5">•</span>
               <span>Include key details like dates or context</span>
             </li>
             <li className="flex items-start">
-              <span className="text-sky-400 mr-1.5">•</span>
+              <span className="text-primary-500 mr-1.5">•</span>
               <span>Chat with your research results for deeper insights</span>
             </li>
           </ul>
@@ -253,50 +253,50 @@ export default function MobileHomeScreen({
         
         .input-glow-subtle {
           box-shadow: 
-            0 0 5px rgba(56, 189, 248, 0.2),
-            0 0 12px rgba(14, 165, 233, 0.15),
-            0 0 20px rgba(2, 132, 199, 0.1);
+            0 0 5px rgba(65, 125, 192, 0.18),
+            0 0 12px rgba(52, 103, 165, 0.14),
+            0 0 20px rgba(34, 69, 109, 0.08);
           animation: pulse-glow-subtle 3s infinite alternate;
         }
         
         @keyframes pulse-glow-subtle {
           0% {
             box-shadow: 
-              0 0 5px rgba(56, 189, 248, 0.2),
-              0 0 12px rgba(14, 165, 233, 0.15),
-              0 0 20px rgba(2, 132, 199, 0.1);
+              0 0 5px rgba(65, 125, 192, 0.18),
+              0 0 12px rgba(52, 103, 165, 0.14),
+              0 0 20px rgba(34, 69, 109, 0.08);
           }
           100% {
             box-shadow: 
-              0 0 8px rgba(56, 189, 248, 0.25),
-              0 0 15px rgba(14, 165, 233, 0.2),
-              0 0 25px rgba(2, 132, 199, 0.15);
+              0 0 8px rgba(65, 125, 192, 0.25),
+              0 0 15px rgba(52, 103, 165, 0.2),
+              0 0 25px rgba(34, 69, 109, 0.12);
           }
         }
         
         .input-glow-active {
           box-shadow: 
-            0 0 5px rgba(56, 189, 248, 0.3),
-            0 0 15px rgba(56, 189, 248, 0.3),
-            0 0 25px rgba(14, 165, 233, 0.2),
-            inset 0 0 3px rgba(186, 230, 253, 0.1);
+            0 0 5px rgba(65, 125, 192, 0.28),
+            0 0 15px rgba(65, 125, 192, 0.28),
+            0 0 25px rgba(52, 103, 165, 0.2),
+            inset 0 0 3px rgba(238, 245, 252, 0.2);
           animation: pulse-glow-active 2s infinite alternate;
         }
         
         @keyframes pulse-glow-active {
           0% {
             box-shadow: 
-              0 0 5px rgba(56, 189, 248, 0.3),
-              0 0 15px rgba(56, 189, 248, 0.3),
-              0 0 25px rgba(14, 165, 233, 0.2),
-              inset 0 0 3px rgba(186, 230, 253, 0.1);
+              0 0 5px rgba(65, 125, 192, 0.28),
+              0 0 15px rgba(65, 125, 192, 0.28),
+              0 0 25px rgba(52, 103, 165, 0.2),
+              inset 0 0 3px rgba(238, 245, 252, 0.2);
           }
           100% {
             box-shadow: 
-              0 0 8px rgba(56, 189, 248, 0.4),
-              0 0 20px rgba(14, 165, 233, 0.4),
-              0 0 30px rgba(2, 132, 199, 0.3),
-              inset 0 0 5px rgba(186, 230, 253, 0.2);
+              0 0 8px rgba(65, 125, 192, 0.35),
+              0 0 20px rgba(52, 103, 165, 0.32),
+              0 0 30px rgba(34, 69, 109, 0.22),
+              inset 0 0 5px rgba(238, 245, 252, 0.25);
           }
         }
         

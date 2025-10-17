@@ -4,8 +4,8 @@
   "description": "AI research assistant that helps you find information and answer questions.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#111827",
+  "background_color": "#ffffff",
+  "theme_color": "#417dc0",
   "orientation": "portrait",
   "icons": [
     {

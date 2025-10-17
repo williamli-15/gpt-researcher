@@ -76,7 +76,7 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
   return (
     <>
       {/* Panel Header */}
-      <div className="flex justify-between items-center px-2 py-3 border-b border-gray-800/60 bg-gray-900/40">
+      <div className="flex justify-between items-center px-2 py-3 border-b border-gray-200 bg-white">
         {/* Left side */}
         {/* <div className="flex items-center">
           <a href="/" className="mr-3">
@@ -97,8 +97,8 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
         <div className="flex items-center gap-3">
           {/* Connection status indicator */}
           <div className="flex items-center">
-            <div className={`w-1.5 h-1.5 rounded-full ${loading || isProcessingChat ? 'bg-amber-500 animate-pulse' : 'bg-teal-500'} mr-2`}></div>
-            <span className="text-xs text-gray-400">{loading ? 'researching' : isProcessingChat ? 'thinking' : 'active'}</span>
+            <div className={`w-1.5 h-1.5 rounded-full ${loading || isProcessingChat ? 'bg-amber-500 animate-pulse' : 'bg-primary-500'} mr-2`}></div>
+            <span className="text-xs text-gray-600">{loading ? 'researching' : isProcessingChat ? 'thinking' : 'active'}</span>
           </div>
           
           {/* Toggle button */}
@@ -108,7 +108,7 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
                 e.preventDefault();
                 setIsCopilotVisible(false);
               }}
-              className="flex items-center justify-center w-7 h-7 rounded-md hover:bg-gray-800 text-gray-400 hover:text-gray-200 transition-colors border border-transparent hover:border-gray-700/50"
+              className="flex items-center justify-center w-7 h-7 rounded-md hover:bg-gray-100 text-gray-500 hover:text-gray-900 transition-colors border border-transparent hover:border-gray-200"
               aria-label="Hide copilot panel"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -122,18 +122,18 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
       {/* Chat Messages - Scrollable */}
       <div 
         ref={chatContainerRef} 
-        className="flex-1 overflow-y-auto py-2 px-2 custom-scrollbar bg-gray-900/20"
+        className="flex-1 overflow-y-auto py-2 px-2 custom-scrollbar bg-white"
       >
         {/* Status message - conditional on research state */}
         <div className="mb-4">
-          <div className="p-3 bg-gray-800/30 rounded-md border border-gray-700/40 shadow-sm">
+          <div className="p-3 bg-primary-50 rounded-md border border-primary-100 shadow-sm">
             <div className="flex items-start gap-3">
-              <div className="w-7 h-7 rounded-md bg-gray-800 flex items-center justify-center flex-shrink-0 text-gray-300 border border-gray-700/50">
+              <div className="w-7 h-7 rounded-md bg-white flex items-center justify-center flex-shrink-0 text-primary-600 border border-primary-200">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                 </svg>
               </div>
-              <div className="text-gray-300 text-sm">
+              <div className="text-gray-700 text-sm">
                 {loading ? (
                   <p>Working on your research... I&apos;ll analyze the results once they&apos;re complete.</p>
                 ) : (
@@ -178,7 +178,7 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
       </div>
 
       {/* Chat Input */}
-      <div className="py-3 px-2 border-t border-gray-800/60 bg-gray-900/40">
+      <div className="py-3 px-2 border-t border-gray-200 bg-white">
         {!isStopped && (
           <ChatInput
             promptValue={chatPromptValue}
@@ -188,7 +188,7 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
           />
         )}
         {isStopped && (
-          <div className="text-center p-2 text-gray-400 bg-gray-800/40 rounded-md border border-gray-700/40 text-sm">
+          <div className="text-center p-2 text-gray-600 bg-gray-100 rounded-md border border-gray-200 text-sm">
             Research has been stopped. Start a new research to continue chatting.
           </div>
         )}
@@ -210,16 +210,16 @@ const CopilotPanel: React.FC<CopilotPanelProps> = ({
         }
         
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(17, 24, 39, 0.1);
+          background: #e5e7eb;
         }
         
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(75, 85, 99, 0.5);
+          background: rgba(65, 125, 192, 0.4);
           border-radius: 20px;
         }
         
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(75, 85, 99, 0.7);
+          background: rgba(43, 85, 135, 0.6);
         }
       `}</style>
     </>

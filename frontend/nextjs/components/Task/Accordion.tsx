@@ -65,18 +65,18 @@ const Accordion: React.FC<AccordionProps> = ({ logs }) => {
     if (log.header === 'differences' && log.processedData) {
       return log.processedData.map((data, index) => (
         <div key={index} className="mb-4">
-          <h3 className="font-semibold text-lg text-body-color dark:text-dark-6">{data.field}:</h3>
+          <h3 className="font-semibold text-lg text-gray-900">{data.field}:</h3>
           {data.isMarkdown ? (
             <div className="markdown-content" dangerouslySetInnerHTML={{ __html: data.htmlContent as string }} />
           ) : (
-            <p className="text-body-color dark:text-dark-6">
+            <p className="text-gray-700">
               {typeof data.htmlContent === 'object' ? JSON.stringify(data.htmlContent) : data.htmlContent}
             </p>
           )}
         </div>
       ));
     } else {
-      return <p className="mb-2 text-body-color dark:text-dark-6">{log.text}</p>;
+      return <p className="mb-2 text-gray-700">{log.text}</p>;
     }
   };
 
@@ -87,13 +87,13 @@ const Accordion: React.FC<AccordionProps> = ({ logs }) => {
   };
 
   return (
-    <div id="accordion-collapse" data-accordion="collapse" className="mt-4 bg-gray-900 rounded-lg">
+    <div id="accordion-collapse" data-accordion="collapse" className="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
       {processedLogs.map((log, index) => (
         <div key={index}>
           <h2 id={`accordion-collapse-heading-${index}`}>
             <button
               type="button"
-              className="flex items-center w-full p-5 font-medium rtl:text-right text-white rounded-t-xl gap-3"
+              className="flex items-center w-full p-5 font-medium rtl:text-right text-gray-900 rounded-t-xl gap-3"
               onClick={() => handleToggle(index)}
               aria-expanded={openIndex === index}
               aria-controls={`accordion-collapse-body-${index}`}
@@ -122,7 +122,7 @@ const Accordion: React.FC<AccordionProps> = ({ logs }) => {
             className={`${openIndex === index ? '' : 'hidden'}`}
             aria-labelledby={`accordion-collapse-heading-${index}`}
           >
-            <div className="p-5 border border-b-0 border-gray-900 dark:border-gray-900 dark:bg-gray-900 text-white">
+            <div className="p-5 border border-b-0 border-gray-200 bg-gray-50 text-gray-900">
               {renderLogContent(log)}
             </div>
           </div>

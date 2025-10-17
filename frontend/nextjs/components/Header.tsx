@@ -14,7 +14,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch, isCopil
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Pure transparent blur background */}
-      <div className="absolute inset-0 backdrop-blur-sm bg-transparent"></div>
+      <div className="absolute inset-0 backdrop-blur-sm bg-white/70 border-b border-gray-200"></div>
       
       {/* Header container */}
       <div className="container relative h-[60px] px-4 lg:h-[80px] lg:px-0 pt-4 pb-4">
@@ -45,7 +45,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch, isCopil
             {(isStopped || !loading) && showResult && !isCopilotMode && (
               <button
                 onClick={onNewResearch}
-                className="flex items-center justify-center px-4 sm:px-6 h-9 sm:h-10 text-sm text-white bg-teal-500 rounded-full hover:bg-teal-600 transform hover:scale-105 transition-all duration-200 shadow-lg whitespace-nowrap min-w-[120px]"
+                className="flex items-center justify-center px-4 sm:px-6 h-9 sm:h-10 text-sm text-white bg-primary-600 rounded-full hover:bg-primary-700 transform hover:scale-105 transition-all duration-200 shadow-lg whitespace-nowrap min-w-[120px]"
               >
                 New Research
               </button>
