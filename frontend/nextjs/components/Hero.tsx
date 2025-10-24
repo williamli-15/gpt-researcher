@@ -1,18 +1,22 @@
-import Image from "next/image";
 import React, { FC, useEffect, useState, useRef } from "react";
 import InputArea from "./ResearchBlocks/elements/InputArea";
 import { motion, AnimatePresence } from "framer-motion";
+import { AGENT_PROFILES } from "@/data/agentProfiles";
 
 type THeroProps = {
   promptValue: string;
   setPromptValue: React.Dispatch<React.SetStateAction<string>>;
   handleDisplayResult: (query : string) => void;
+  selectedAgentProfile: string;
+  onSelectAgentProfile: (profileId: string) => void;
 };
 
 const Hero: FC<THeroProps> = ({
   promptValue,
   setPromptValue,
   handleDisplayResult,
+  selectedAgentProfile,
+  onSelectAgentProfile,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showGradient, setShowGradient] = useState(true);
@@ -92,6 +96,10 @@ const Hero: FC<THeroProps> = ({
     setPromptValue(value);
   };
 
+  const handleSelectUseCase = (profileId: string) => {
+    onSelectAgentProfile(profileId);
+  };
+
   // Animation variants for consistent animations
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -146,6 +154,59 @@ const Hero: FC<THeroProps> = ({
               AI may make mistakes. Verify important information and check sources.
             </p>
           </motion.div>
+        </motion.div>
+
+        {/* Use-case selector grid */}
+        <motion.div
+          variants={fadeInUp}
+          transition={{ duration: 0.8, delay: 0.35 }}
+          className="w-full max-w-[1000px] px-4 mt-4"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+            {AGENT_PROFILES.map((profile) => {
+              const isActive = selectedAgentProfile === profile.id;
+              return (
+                <button
+                  key={profile.id}
+                  type="button"
+                  onClick={() => handleSelectUseCase(profile.id)}
+                  className={`text-left rounded-xl border transition-all duration-300 shadow-sm hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 ${
+                    isActive
+                      ? "border-primary-500 bg-primary-50/70"
+                      : "border-gray-200 bg-white hover:border-primary-400/70"
+                  }`}
+                >
+                  <div className="p-4 md:p-5 h-full flex flex-col gap-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-primary-600">
+                        {profile.category}
+                      </span>
+                      {isActive && (
+                        <span className="inline-flex items-center gap-1 text-xs font-medium text-primary-700 bg-white/70 px-2 py-1 rounded-full shadow-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M16.704 5.29a1 1 0 0 1 .006 1.414l-7.25 7.342a1 1 0 0 1-1.436.004l-3.428-3.4a1 1 0 1 1 1.406-1.422l2.706 2.684 6.543-6.621a1 1 0 0 1 1.453-.001z" clipRule="evenodd" />
+                          </svg>
+                          Selected
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900">
+                      {profile.agentName}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      <span className="font-semibold text-gray-700">Main focus:</span> {profile.mainFocus}
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      <span className="font-semibold text-gray-700">Who it helps:</span> {profile.audience}
+                    </p>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      <span className="font-semibold text-gray-700">What it covers:</span> {profile.coverage}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </motion.div>
 
         {/* Suggestions section with enhanced styling */}

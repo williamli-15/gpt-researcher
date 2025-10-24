@@ -47,6 +47,7 @@ class GPTResearcher:
         websocket=None,
         agent=None,
         role=None,
+        agent_profile: str | None = None,
         parent_query: str = "",
         subtopics: list | None = None,
         visited_urls: set | None = None,
@@ -81,6 +82,7 @@ class GPTResearcher:
             websocket: WebSocket for streaming output.
             agent: Pre-defined agent type.
             role: Pre-defined agent role.
+            agent_profile (str | None): Identifier for the fixed-use-case agent profile to load.
             parent_query: Parent query for subtopic reports.
             subtopics: List of subtopics to research.
             visited_urls: Set of already visited URLs.
@@ -135,6 +137,7 @@ class GPTResearcher:
         self.websocket = websocket
         self.agent = agent
         self.role = role
+        self.agent_profile = agent_profile
         self.parent_query = parent_query
         self.subtopics = subtopics or []
         self.visited_urls = visited_urls or set()
@@ -303,9 +306,10 @@ class GPTResearcher:
             await self._log_event("action", action="choose_agent")
             # Filter out encoding parameter as it's not supported by LLM APIs
             # filtered_kwargs = {k: v for k, v in self.kwargs.items() if k != 'encoding'}
-            self.agent, self.role = await choose_agent(
+            self.agent, self.role, profile_domains, resolved_profile = await choose_agent(
                 query=self.query,
                 cfg=self.cfg,
+                agent_profile=self.agent_profile,
                 parent_query=self.parent_query,
                 cost_callback=self.add_costs,
                 headers=self.headers,
@@ -313,6 +317,9 @@ class GPTResearcher:
                 **self.kwargs,
                 # **filtered_kwargs
             )
+            self.agent_profile = resolved_profile
+            if not self.query_domains and profile_domains:
+                self.query_domains = profile_domains
             await self._log_event("action", action="agent_selected", details={
                 "agent": self.agent,
                 "role": self.role

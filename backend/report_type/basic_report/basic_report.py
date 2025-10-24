@@ -19,6 +19,7 @@ class BasicReport:
         headers=None,
         mcp_configs=None,
         mcp_strategy=None,
+        agent_profile: str | None = None,
     ):
         self.query = query
         self.query_domains = query_domains
@@ -30,6 +31,7 @@ class BasicReport:
         self.config_path = config_path
         self.websocket = websocket
         self.headers = headers or {}
+        self.agent_profile = agent_profile
 
         # Initialize researcher with optional MCP parameters
         gpt_researcher_params = {
@@ -43,6 +45,7 @@ class BasicReport:
             "config_path": self.config_path,
             "websocket": self.websocket,
             "headers": self.headers,
+            "agent_profile": self.agent_profile,
         }
 
         # Add MCP parameters if provided

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { ResearchHistoryItem } from '@/types/data';
 import { useResearchHistoryContext } from '@/hooks/ResearchHistoryContext';
-import LoadingDots from '@/components/LoadingDots';
 import { toast } from "react-hot-toast";
+import { AGENT_PROFILES } from '@/data/agentProfiles';
 
 interface MobileHomeScreenProps {
   promptValue: string;
@@ -11,6 +11,8 @@ interface MobileHomeScreenProps {
   isLoading?: boolean;
   placeholder?: string;
   handleKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;
+  selectedAgentProfile: string;
+  onSelectAgentProfile: (profileId: string) => void;
 }
 
 export default function MobileHomeScreen({
@@ -19,7 +21,9 @@ export default function MobileHomeScreen({
   handleDisplayResult,
   isLoading = false,
   placeholder = "What would you like to research today?",
-  handleKeyDown
+  handleKeyDown,
+  selectedAgentProfile,
+  onSelectAgentProfile
 }: MobileHomeScreenProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { history } = useResearchHistoryContext();
@@ -145,6 +149,36 @@ export default function MobileHomeScreen({
         </div>
         <p className="text-gray-400 text-sm">Say Hello to GPT Researcher, your AI partner for instant insights and comprehensive research</p>
       </div> */}
+
+      <div className="px-4 md:px-6 mt-6">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-sm font-semibold text-gray-800">Choose your focus</h2>
+          <span className="text-xs text-gray-500">Tap to switch expert mode</span>
+        </div>
+        <div className="flex gap-3 overflow-x-auto pb-2 snap-x">
+          {AGENT_PROFILES.map((profile) => {
+            const isActive = selectedAgentProfile === profile.id;
+            return (
+              <button
+                key={profile.id}
+                type="button"
+                onClick={() => onSelectAgentProfile(profile.id)}
+                className={`min-w-[240px] snap-start rounded-2xl border px-4 py-3 text-left transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-1 ${
+                  isActive ? 'border-primary-500 bg-primary-50/80' : 'border-gray-200 bg-white'
+                }`}
+              >
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
+                  {profile.category}
+                </p>
+                <p className="text-sm font-semibold text-gray-900 mb-1">{profile.agentName}</p>
+                <p className="text-[13px] text-gray-600">
+                  <span className="font-medium text-gray-700">Focus:</span> {profile.mainFocus}
+                </p>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Search Box */}
       <div className="px-4 md:px-8 w-full max-w-lg mx-auto">

@@ -57,6 +57,12 @@ export const GPTResearcher = ({
   const [isStopped, setIsStopped] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const mainContentRef = useRef<HTMLDivElement>(null);
+  const [selectedAgentProfile, setSelectedAgentProfile] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('agentProfile') || 'a_clinic_daily';
+    }
+    return 'a_clinic_daily';
+  });
 
   // Store apiUrl in state to ensure consistency
   const [currentApiUrl, setCurrentApiUrl] = useState(apiUrl);
@@ -65,6 +71,13 @@ export const GPTResearcher = ({
   useEffect(() => {
     setCurrentApiUrl(apiUrl);
   }, [apiUrl]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    localStorage.setItem('agentProfile', selectedAgentProfile);
+  }, [selectedAgentProfile]);
 
   // Update callback when results change
   useEffect(() => {
@@ -80,6 +93,10 @@ export const GPTResearcher = ({
     setShowHumanFeedback,
     setQuestionForHuman
   );
+
+  const handleSelectAgentProfile = (profileId: string) => {
+    setSelectedAgentProfile(profileId);
+  };
 
   const handleFeedbackSubmit = (feedback: string | null) => {
     if (socket) {
@@ -172,7 +189,7 @@ export const GPTResearcher = ({
       apiVariables.API_KEY = apiKey;
     }
     
-    initializeWebSocket(newQuestion, chatBoxSettings);
+    initializeWebSocket(newQuestion, chatBoxSettings, selectedAgentProfile);
 
   };
 
@@ -302,6 +319,8 @@ export const GPTResearcher = ({
             promptValue={promptValue}
             setPromptValue={setPromptValue}
             handleDisplayResult={handleDisplayResult}
+            selectedAgentProfile={selectedAgentProfile}
+            onSelectAgentProfile={handleSelectAgentProfile}
           />
         )}
 

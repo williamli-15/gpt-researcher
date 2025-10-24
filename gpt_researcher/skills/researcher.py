@@ -94,14 +94,20 @@ class ResearchConductor:
 
         # Choose agent and role if not already defined
         if not (self.researcher.agent and self.researcher.role):
-            self.researcher.agent, self.researcher.role = await choose_agent(
+            agent_name, agent_role, profile_domains, resolved_profile = await choose_agent(
                 query=self.researcher.query,
                 cfg=self.researcher.cfg,
+                agent_profile=self.researcher.agent_profile,
                 parent_query=self.researcher.parent_query,
                 cost_callback=self.researcher.add_costs,
                 headers=self.researcher.headers,
                 prompt_family=self.researcher.prompt_family
             )
+            self.researcher.agent = agent_name
+            self.researcher.role = agent_role
+            self.researcher.agent_profile = resolved_profile
+            if not self.researcher.query_domains and profile_domains:
+                self.researcher.query_domains = profile_domains
                 
         # Check if MCP retrievers are configured
         has_mcp_retriever = any("mcpretriever" in r.__name__.lower() for r in self.researcher.retrievers)
@@ -963,4 +969,3 @@ class ResearchConductor:
                     "progress": progress
                 }
             )
-

@@ -75,6 +75,12 @@ export default function Home() {
   const [currentResearchId, setCurrentResearchId] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isProcessingChat, setIsProcessingChat] = useState(false);
+  const [selectedAgentProfile, setSelectedAgentProfile] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('agentProfile') || 'a_clinic_daily';
+    }
+    return 'a_clinic_daily';
+  });
 
   // Use our custom scroll handler
   const { showScrollButton, scrollToBottom } = useScrollHandler(mainContentRef);
@@ -94,6 +100,11 @@ export default function Home() {
     // Cleanup
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    localStorage.setItem('agentProfile', selectedAgentProfile);
+  }, [selectedAgentProfile]);
 
   const { 
     history, 
@@ -116,6 +127,10 @@ export default function Home() {
   
   // Use the reference to access websocket functions
   const { socket, initializeWebSocket } = websocketRef.current;
+
+  const handleSelectAgentProfile = (profileId: string) => {
+    setSelectedAgentProfile(profileId);
+  };
 
   const handleFeedbackSubmit = (feedback: string | null) => {
     if (socket) {
@@ -441,7 +456,7 @@ export default function Home() {
         previousChunk = chunk;
       }
     } else {
-      initializeWebSocket(newQuestion, chatBoxSettings);
+      initializeWebSocket(newQuestion, chatBoxSettings, selectedAgentProfile);
     }
   };
 
@@ -863,6 +878,8 @@ export default function Home() {
           setPromptValue={setPromptValue}
           handleDisplayResult={handleMobileDisplayResult}
           isLoading={loading}
+          selectedAgentProfile={selectedAgentProfile}
+          onSelectAgentProfile={handleSelectAgentProfile}
         />
       );
     } else {
@@ -929,6 +946,8 @@ export default function Home() {
                 promptValue={promptValue}
                 setPromptValue={setPromptValue}
                 handleDisplayResult={handleDisplayResult}
+                selectedAgentProfile={selectedAgentProfile}
+                onSelectAgentProfile={handleSelectAgentProfile}
               />
             </>
           )

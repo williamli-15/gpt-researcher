@@ -44,7 +44,8 @@ export const useWebSocket = (
 
   const initializeWebSocket = useCallback((
     promptValue: string, 
-    chatBoxSettings: ChatBoxSettings
+    chatBoxSettings: ChatBoxSettings,
+    agentProfile: string = 'a_clinic_daily'
   ) => {
     // Close existing socket if any
     if (socket && socket.readyState === WebSocket.OPEN) {
@@ -85,7 +86,8 @@ export const useWebSocket = (
             query_domains: domains,
             mcp_enabled: mcp_enabled || false,
             mcp_strategy: mcp_strategy || "fast",
-            mcp_configs: mcp_configs || []
+            mcp_configs: mcp_configs || [],
+            agent_profile: agentProfile || 'a_clinic_daily'
           };
           
           // Make sure we have a properly formatted command with a space after start

@@ -55,6 +55,7 @@ class ResearchRequest(BaseModel):
     repo_name: str
     branch_name: str
     generate_in_background: bool = True
+    agent_profile: str | None = None
 
 
 class ChatRequest(BaseModel):
@@ -197,7 +198,8 @@ async def write_report(research_request: ResearchRequest, research_id: str = Non
         headers=research_request.headers,
         query_domains=[],
         config_path="",
-        return_researcher=True
+        return_researcher=True,
+        agent_profile=research_request.agent_profile,
     )
 
     docx_path = await write_md_to_word(report_information[0], research_id)

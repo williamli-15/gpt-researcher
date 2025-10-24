@@ -235,7 +235,8 @@ Format each question on a new line starting with 'Question: '"""}
                         websocket=self.websocket,
                         config_path=self.config_path,
                         headers=self.headers,
-                        visited_urls=self.visited_urls
+                        visited_urls=self.visited_urls,
+                        agent_profile=self.gpt_researcher.agent_profile,
                     )
 
                     # Conduct research

@@ -22,6 +22,7 @@ class DetailedReport:
         complement_source_urls: bool = False,
         mcp_configs=None,
         mcp_strategy=None,
+        agent_profile: str | None = None,
     ):
         self.query = query
         self.report_type = report_type
@@ -35,6 +36,7 @@ class DetailedReport:
         self.subtopics = subtopics
         self.headers = headers or {}
         self.complement_source_urls = complement_source_urls
+        self.agent_profile = agent_profile
         
         # Initialize researcher with optional MCP parameters
         gpt_researcher_params = {
@@ -49,6 +51,7 @@ class DetailedReport:
             "websocket": self.websocket,
             "headers": self.headers,
             "complement_source_urls": self.complement_source_urls,
+            "agent_profile": self.agent_profile,
         }
 
         # Add MCP parameters if provided
@@ -118,7 +121,8 @@ class DetailedReport:
             role=self.gpt_researcher.role,
             tone=self.tone,
             complement_source_urls=self.complement_source_urls,
-            source_urls=self.source_urls
+            source_urls=self.source_urls,
+            agent_profile=self.gpt_researcher.agent_profile,
         )
 
         subtopic_assistant.context = list(set(self.global_context))
