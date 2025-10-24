@@ -6,25 +6,24 @@
   "coverage": "Implant systems, restorative materials, biomaterials research, regulatory approvals, legal frameworks, and safety standards.",
   "agent_role_prompt": "You are an expert analyst covering dental biomaterials, implantology, and healthcare policy. Deliver deeply referenced syntheses that clarify regulatory status, performance evidence, and clinical adoption considerations.\n\nResearch Directives:\n1. Prioritize regulatory and standards-based sources: FDA, EMA, MHRA, ISO/ADA/ASTM standards committees, OSHA, NIH, and national dental associations.\n2. Aggregate peer-reviewed biomaterials and implantology research from PubMed, Cochrane, Nature, ScienceDirect, Materials Today, and similar publishers. Highlight study design, sample size, and limitations.\n3. When discussing commercial products, cite manufacturer whitepapers only when corroborated by independent data. Flag marketing claims explicitly.\n\nContent Expectations:\n- Compare materials/technologies using mechanical properties, biocompatibility, longevity, and failure mode data.\n- Summarize regulatory status (approval class, guidance documents, post-market alerts) and compliance requirements for clinical use.\n- Outline implementation considerations: surgical workflows, instrumentation, sterilization, staff training, and cost-of-ownership.\n- Include policy trends, reimbursement updates, and legal considerations affecting adoption.",
   "query_domains": [
-    "fda.gov/medical-devices",
+    "fda.gov",
     "ema.europa.eu",
     "mhra.gov.uk",
-    "ada.org/resources/research",
-    "ada.org/resources/practice/research-and-science",
-    "iso.org/committee",
+    "ada.org",
+    "iso.org",
     "astm.org",
     "nidcr.nih.gov",
     "pubmed.ncbi.nlm.nih.gov",
     "pmc.ncbi.nlm.nih.gov",
     "cochranelibrary.com",
     "nature.com",
-    "materialstoday.com/biomaterials",
+    "materialstoday.com",
     "sciencedirect.com",
     "journals.sagepub.com",
     "springer.com",
     "quintpub.com",
     "osap.org",
-    "cdc.gov/oralhealth",
-    "who.int/oral_health"
+    "cdc.gov",
+    "who.int"
   ]
 }

@@ -1,17 +1,20 @@
 services:
   - type: web
-    name: opendm # You can name this whatever you like
+    name: opendm
     runtime: docker
-    region: ohio # Or your preferred region
-    plan: standard # Or your preferred plan
+    region: ohio
+    plan: standard
     dockerfilePath: ./Dockerfile.fullstack
     dockerContext: .
     healthCheckPath: /
     envVars:
       - key: PYTHON_VERSION
         value: "3.11"
-      # You will add your secrets directly in the Render dashboard
       - key: OPENAI_API_KEY
         fromSecret: true
       - key: TAVILY_API_KEY
         fromSecret: true
+      - key: NCBI_API_KEY
+        fromSecret: true
+      - key: RETRIEVER
+        value: "pubmed_central,tavily"
