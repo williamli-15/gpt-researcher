@@ -122,45 +122,45 @@ Please conduct thorough research and provide your findings. Use the tools strate
         question: str,
         parent_query: str,
         report_type: str,
-        max_iterations: int = 3,
+        max_iterations: int = 3, # We can appropriately increase this value, such as to 5, to achieve a more comprehensive search.
         context: List[Dict[str, Any]] = [],
     ):
-        """Generates the search queries prompt for the given question.
-        Args:
-            question (str): The question to generate the search queries prompt for
-            parent_query (str): The main question (only relevant for detailed reports)
-            report_type (str): The report type
-            max_iterations (int): The maximum number of search queries to generate
-            context (str): Context for better understanding of the task with realtime web information
-
-        Returns: str: The search queries prompt for the given question
         """
+        MODIFIED: This prompt now guides the LLM to think like a clinical researcher,
+        using the PICO framework to generate structured, high-quality search queries
+        for medical databases and official guidelines.
+        """
+        task = f"{parent_query} - {question}" if parent_query else question
 
-        if (
-            report_type == ReportType.DetailedReport.value
-            or report_type == ReportType.SubtopicReport.value
-        ):
-            task = f"{parent_query} - {question}"
-        else:
-            task = question
+        return f"""You are an expert medical librarian and clinical researcher. Your task is to break down the following clinical question into specific, searchable queries for databases like PubMed and Cochrane, as well as for official clinical guideline repositories.
 
-        context_prompt = f"""
-You are a seasoned research assistant tasked with generating search queries to find relevant information for the following task: "{task}".
-Context: {context}
+    **Clinical Question:** "{task}"
 
-Use this context to inform and refine your search queries. The context provides real-time web information that can help you generate more specific and relevant queries. Consider any current events, recent developments, or specific details mentioned in the context that could enhance the search queries.
-""" if context else ""
+    **Your Process (Follow these steps):**
+    1.  **Analyze with PICO**: First, mentally break down the question into the PICO framework:
+        *   **P (Patient/Problem)**: Who is the patient population? What is the disease or condition?
+        *   **I (Intervention)**: What is the main intervention, treatment, or diagnostic test being considered?
+        *   **C (Comparison)**: Is there a comparison intervention? (This may be 'no intervention' or 'placebo').
+        *   **O (Outcome)**: What is the desired clinical outcome? (e.g., mortality, symptom relief, efficacy).
+    2.  **Formulate Search Strategies**: Based on your PICO analysis, generate {max_iterations} precise search queries. These queries should be designed to find the highest level of evidence.
+    3.  **Query Types**: Your queries should aim to find:
+        *   Systematic Reviews or Meta-Analyses.
+        *   Randomized Controlled Trials (RCTs).
+        *   Official Clinical Practice Guidelines from major health organizations.
+        *   Comparative effectiveness research.
 
-        dynamic_example = ", ".join([f'"query {i+1}"' for i in range(max_iterations)])
+    **Output Format:**
+    You must respond with a JSON list of strings. The response should contain ONLY the list.
 
-        return f"""Write {max_iterations} google search queries to search online that form an objective opinion from the following task: "{task}"
+    **Example for a question 'Does drug X improve outcomes in patients with Y?':**
+    ["(drug X OR generic name) AND (disease Y) systematic review meta-analysis", 
+    "(drug X) AND (disease Y) randomized controlled trial", 
+    "disease Y clinical practice guideline treatment",
+    "efficacy AND safety of drug X in Y population",
+    "drug X vs placebo for disease Y outcomes"]
 
-Assume the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
-
-{context_prompt}
-You must respond with a list of strings in the following format: [{dynamic_example}].
-The response should contain ONLY the list.
-"""
+    Now, generate the queries for the clinical question above.
+    """
 
     @staticmethod
     def generate_report_prompt(
@@ -168,57 +168,41 @@ The response should contain ONLY the list.
         context,
         report_source: str,
         report_format="apa",
-        total_words=1000,
+        total_words=1000, # Although this parameter still exists, our new prompt will ignore it.
         tone=None,
         language="english",
     ):
-        """Generates the report prompt for the given question and research summary.
-        Args: question (str): The question to generate the report prompt for
-                research_summary (str): The research summary to generate the report prompt for
-        Returns: str: The report prompt for the given question and research summary
+        """
+        MODIFIED: This prompt now generates a direct, concise, evidence-based answer 
+        instead of a full standalone report. It focuses on synthesis and citation.
         """
 
-        reference_prompt = ""
-        if report_source == ReportSource.Web.value:
-            reference_prompt = f"""
-You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.
-Every url should be hyperlinked: [url website](url)
-Additionally, you MUST include hyperlinks to the relevant URLs wherever they are referenced in the report:
+        reference_prompt = f"""
+    - You MUST use in-text citations in {report_format} format. Each citation must be a markdown hyperlink to the source URL, like this: ([Author, Year](http://...)).
+    - At the end of your entire response, you MUST provide a "References" section.
+    - In the "References" section, list all unique source URLs you cited, each on a new line, without hyperlinks. Example: Author, A. A. (Year). Title. Retrieved from http://...
+    """
 
-eg: Author, A. A. (Year, Month Date). Title of web page. Website Name. [url website](url)
-"""
-        else:
-            reference_prompt = f"""
-You MUST write all used source document names at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each."
-"""
-
-        tone_prompt = f"Write the report in a {tone.value} tone." if tone else ""
+        tone_prompt = f"Write the response in a {tone.value} tone, focusing on clinical precision and clarity." if tone else "Write with a tone of clinical precision and clarity."
 
         return f"""
-Information: "{context}"
----
-Using the above information, answer the following query or task: "{question}" in a detailed report --
-The report should focus on the answer to the query, should be well structured, informative,
-in-depth, and comprehensive, with facts and numbers if available and at least {total_words} words.
-You should strive to write the report as long as you can using all relevant and necessary information provided.
+    **Context from Evidence-Based Sources:**
+    ---
+    {context}
+    ---
 
-Please follow all of the following guidelines in your report:
-- You MUST determine your own concrete and valid opinion based on the given information. Do NOT defer to general and meaningless conclusions.
-- You MUST write the report with markdown syntax and {report_format} format.
-- Structure your report with clear markdown headers: use # for the main title, ## for major sections, and ### for subsections.
-- Use markdown tables when presenting structured data or comparisons to enhance readability.
-- You MUST prioritize the relevance, reliability, and significance of the sources you use. Choose trusted sources over less reliable ones.
-- You must also prioritize new articles over older articles if the source can be trusted.
-- You MUST NOT include a table of contents, but DO include proper markdown headers (# ## ###) to structure your report clearly.
-- Use in-text citation references in {report_format} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
-- Don't forget to add a reference list at the end of the report in {report_format} format and full url links without hyperlinks.
-- {reference_prompt}
-- {tone_prompt}
+    **Task:**
+    Based EXCLUSIVELY on the provided context above, provide a direct and concise answer to the following clinical question: "{question}"
 
-You MUST write the report in the following language: {language}.
-Please do your best, this is very important to my career.
-Assume that the current date is {date.today()}.
-"""
+    **Response Guidelines (Follow Strictly):**
+    1.  **Direct Answer**: Begin your response by directly addressing the user's question. Do not write an "Introduction" or "Conclusion" section. Your entire output should be the answer itself.
+    2.  **Synthesize Evidence**: Synthesize the key findings from the provided context into a coherent answer. Do not simply list summaries of each source.
+    3.  **Evidence-Based**: Every factual claim or statement in your answer MUST be supported by an inline citation pointing to the relevant source from the context.
+    4.  **Clarity and Conciseness**: Be clear and to the point. Avoid verbose language or speculative statements that are not supported by the evidence. The goal is a high-yield, actionable summary of the evidence, not a long report.
+    5.  **Citations and References**: {reference_prompt}
+    6.  **Tone and Language**: {tone_prompt} You must write in {language}.
+    7.  **Date Awareness**: Assume the current date is {date.today()}.
+    """
 
     @staticmethod
     def curate_sources(query, sources, max_results=10):

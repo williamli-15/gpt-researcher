@@ -517,12 +517,12 @@ class ResearchConductor:
                     web_available = bool(web_context)
                     cache_used = self._mcp_results_cache is not None and mcp_retrievers and mcp_strategy != "deep"
                     cache_status = " (cached)" if cache_used else ""
-                    await stream_output(
-                        "logs",
-                        "context_combined",
-                        f"📚 Combined research context: ",
-                        self.researcher.websocket,
-                    )
+                    # await stream_output(
+                    #     "logs",
+                    #     "context_combined",
+                    #     f"📚 Combined research context: ",
+                    #     self.researcher.websocket,
+                    # )
             else:
                 self.logger.warning(f"No combined context found for sub-query: {sub_query}")
                 if self.researcher.verbose:
