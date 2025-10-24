@@ -11,10 +11,10 @@ services:
       - key: PYTHON_VERSION
         value: "3.11"
       - key: OPENAI_API_KEY
-        fromSecret: true
+        sync: false
       - key: TAVILY_API_KEY
-        fromSecret: true
+        sync: false
       - key: NCBI_API_KEY
-        fromSecret: true
+        sync: false
       - key: RETRIEVER
         value: "pubmed_central,tavily"
