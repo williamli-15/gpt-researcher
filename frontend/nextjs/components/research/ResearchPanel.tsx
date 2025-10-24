@@ -51,7 +51,7 @@ const ResearchPanel: React.FC<ResearchPanelProps> = ({
           {onNewResearch && (
             <button 
               onClick={onNewResearch}
-              className="px-3 py-1.5 bg-primary-50 hover:bg-primary-100 text-primary-700 rounded-md flex items-center gap-1.5 transition-colors text-sm font-medium border border-primary-100"
+              className="relative overflow-hidden px-3 py-1.5 rounded-md text-white text-sm font-semibold flex items-center gap-1.5 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 shadow-[0_6px_16px_rgba(65,125,192,0.25)] hover:shadow-[0_8px_18px_rgba(65,125,192,0.3)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/60 focus-visible:ring-offset-1 focus-visible:ring-offset-white"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -65,7 +65,7 @@ const ResearchPanel: React.FC<ResearchPanelProps> = ({
           {onShareClick && currentResearchId && (
             <button 
               onClick={onShareClick}
-              className="px-3 py-1.5 bg-primary-600 hover:bg-primary-700 text-white rounded-md flex items-center gap-1.5 transition-colors border border-primary-500/50 text-sm shadow-sm hover:shadow-[rgba(65,125,192,0.2)]"
+              className="relative overflow-hidden px-3 py-1.5 rounded-md text-white text-sm font-semibold flex items-center gap-1.5 bg-gradient-to-r from-primary-600 via-primary-700 to-primary-800 shadow-[0_6px_18px_rgba(34,69,109,0.35)] hover:shadow-[0_10px_22px_rgba(34,69,109,0.4)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600/60 focus-visible:ring-offset-1 focus-visible:ring-offset-white"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
@@ -80,7 +80,7 @@ const ResearchPanel: React.FC<ResearchPanelProps> = ({
           {!isCopilotVisible && setIsCopilotVisible && (
             <button 
               onClick={() => setIsCopilotVisible(true)}
-              className={`px-3 py-1.5 bg-primary-600 hover:bg-primary-700 text-white rounded-md flex items-center gap-1.5 transition-colors border border-primary-500/60 text-sm ${researchComplete ? 'animate-chat-button-pulse' : ''}`}
+              className={`px-3 py-1.5 rounded-md text-white text-sm font-semibold flex items-center gap-1.5 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 shadow-[0_6px_16px_rgba(65,125,192,0.25)] hover:shadow-[0_8px_18px_rgba(65,125,192,0.3)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500/60 focus-visible:ring-offset-1 focus-visible:ring-offset-white ${researchComplete ? 'animate-chat-button-pulse' : ''}`}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
