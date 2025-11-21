@@ -26,7 +26,7 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch, isCopil
               alt="logo"
               // width={60}
               // height={60}
-              className="lg:h-16 "
+              className="lg:h-16 invisible"
             />
           </a>
           
